@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="icon" href="./favicon.svg" sizes="any">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto | Aqua Hunza Paraguay</title>
+<meta name="description" content="Solicitá asesoramiento sin costo sobre purificadores y filtros de agua en Paraguay. Un asesor te contactará para evaluar el origen del agua, el consumo y la mejor solución.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#102A38;--teal:#279CBC;--ink:#111820;--line:#E4EEF3;--muted:#5A7383;--soft:#F2F9FB;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:var(--teal);text-decoration:none}
+  ::selection{background:var(--teal);color:#fff}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+
+  /* ---------- header ---------- */
+  header.site{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  header.site .bar{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+  header.site img.logo{height:96px;width:140px;display:block}
+  nav.desktop{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:nowrap}
+  nav.desktop a{font-size:13.5px;color:var(--navy);white-space:nowrap;transition:color .2s ease}
+  nav.desktop a:hover,nav.desktop a[aria-current]{color:var(--teal)}
+  nav.desktop a.cta{background:var(--teal);color:#fff;font-weight:600;padding:12px 20px;border-radius:999px;transition:background .25s ease,transform .25s ease}
+  nav.desktop a.cta:hover{background:var(--navy);color:#fff;transform:translateY(-1px)}
+
+  details.mobile{display:none;margin-left:auto}
+  details.mobile>summary{list-style:none;cursor:pointer;width:46px;height:46px;border:1px solid #D8E7ED;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:18px}
+  details.mobile>summary::-webkit-details-marker{display:none}
+  details.mobile .panel{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 24px 22px;display:flex;flex-direction:column;gap:2px;max-height:75vh;overflow:auto}
+  details.mobile .panel a{padding:14px 4px;font-size:16px;color:var(--navy);border-bottom:1px solid #F1F7FA}
+  details.mobile .panel a:last-child{border-bottom:none}
+  details.mobile .panel a.cta{margin-top:12px;background:var(--teal);color:#fff;text-align:center;font-weight:600;padding:16px;border-radius:999px;border:none}
+  @media (max-width:1024px){ nav.desktop{display:none} details.mobile{display:block} }
+
+  /* ---------- contact section ---------- */
+  main{padding-top:104px}
+  .contact{padding:clamp(48px,8vw,104px) 0;background:linear-gradient(180deg,#EEF7FB 0%,#fff 60%)}
+  .grid{display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(22px,2.6vw,36px);align-items:stretch}
+  @media (max-width:940px){.grid{grid-template-columns:1fr}}
+  .eyebrow{color:var(--teal);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:18px}
+  h1.title{font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1.12;letter-spacing:-.02em;color:var(--navy);max-width:18ch;text-wrap:balance}
+  .lead{color:#3C5464;font-size:17px;line-height:1.7;margin:22px 0 0;max-width:46ch}
+
+  /* left navy info panel */
+  .aside{position:relative;overflow:hidden;background:linear-gradient(158deg,#134256 0%,#0C2530 100%);color:#fff;border-radius:22px;padding:clamp(30px,4vw,52px);display:flex;flex-direction:column}
+  .aside::before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(79,208,232,.32),transparent 70%);pointer-events:none}
+  .aside .eyebrow{color:#4FD0E8}
+  .aside h1.title{color:#fff}
+  .aside .lead{color:#C3D6DF}
+  .contacts{margin-top:auto;padding-top:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:12px}
+  .crow{display:flex;align-items:center;gap:14px;color:#E4F1F6;font-size:15.5px}
+  .crow .ic{width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:#4FD0E8;flex:none}
+  .crow .ic svg{width:21px;height:21px}
+  .crow a{color:#E4F1F6}
+  .crow a:hover{color:#4FD0E8}
+  .crow small{display:block;color:#8FAAB8;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;font-weight:700}
+  .badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:#DDEFF5;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:999px}
+  .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#4FD0E8;box-shadow:0 0 8px #4FD0E8}
+
+  /* right form card */
+  .card{background:#fff;border:1px solid var(--line);padding:clamp(26px,3vw,42px);border-radius:22px;box-shadow:0 34px 80px -54px rgba(16,42,56,.55)}
+  .formhead{grid-column:1 / -1;margin-bottom:6px}
+  .formhead h2{font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(20px,2.2vw,26px);color:var(--navy);letter-spacing:-.01em}
+  .formhead p{color:var(--muted);font-size:14.5px;line-height:1.6;margin-top:8px}
+  form{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px 18px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1 / -1}
+  label{font-size:13px;font-weight:600;color:var(--navy);letter-spacing:.01em}
+  input,select,textarea{background:#F7FBFD;border:1.5px solid #E1EDF3;border-radius:12px;padding:14px 16px;font-size:15.5px;color:var(--ink);min-height:50px;font:inherit;width:100%;transition:border-color .2s ease,background .2s ease,box-shadow .2s ease}
+  input:hover,select:hover,textarea:hover{border-color:#C4DEE9}
+  input:focus,select:focus,textarea:focus{outline:none;background:#fff;border-color:var(--teal);box-shadow:0 0 0 4px rgba(39,156,188,.14)}
+  textarea{min-height:auto;resize:vertical}
+  .err{font-size:13px;color:#B3261E;min-height:16px}
+  .consent{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#3C5464;line-height:1.55;cursor:pointer}
+  .consent input{width:20px;height:20px;min-height:0;margin:2px 0 0;accent-color:var(--teal);flex:none}
+  .actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:4px}
+  button.submit{background:linear-gradient(135deg,#2FA6C6,#1E7E9C);color:#fff;font-weight:600;font-size:15.5px;padding:17px 34px;border:none;border-radius:999px;cursor:pointer;min-height:54px;box-shadow:0 16px 32px -16px rgba(39,156,188,.7);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+  button.submit:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 20px 38px -16px rgba(39,156,188,.75)}
+  .hint{font-size:13.5px;color:var(--muted)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .success{display:flex;flex-direction:column;gap:14px;padding:8px 0}
+  .success h2{font-family:Manrope,sans-serif;font-weight:700;font-size:22px;color:var(--navy)}
+  .success p{color:#3C5464;font-size:16.5px;line-height:1.7}
+  .success button{align-self:flex-start;margin-top:6px;background:transparent;border:1px solid var(--teal);color:var(--navy);font-weight:600;padding:13px 22px;border-radius:999px;cursor:pointer}
+  .success button:hover{background:var(--teal);color:#fff}
+
+  /* ---------- footer ---------- */
+  footer.site{background:#111820;color:#C3D6DF;padding:clamp(40px,5vw,60px) 0 28px;margin-top:40px}
+  footer.site .cols{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(32px,4vw,56px)}
+  footer.site img{height:120px;width:175px;display:block;filter:brightness(0) invert(1)}
+  footer.site p.about{font-size:15px;line-height:1.7;margin:22px 0 0;color:#98ADB7;max-width:34ch}
+  footer.site .colhead{font-family:Manrope,sans-serif;color:#fff;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  footer.site nav,footer.site .fcol{display:flex;flex-direction:column;gap:12px}
+  footer.site a{color:#C3D6DF;font-size:15px}
+  footer.site a:hover{color:var(--teal)}
+  footer.site .place{color:#98ADB7;font-size:15px}
+  footer.site .bottom{max-width:1280px;margin:clamp(28px,3.5vw,42px) auto 0;padding:22px 24px 0;border-top:1px solid #223140;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+  footer.site .bottom span{color:#6E8794;font-size:13.5px}
+  footer.site .bottom a{color:#98ADB7;font-size:13.5px}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <a href="Aqua%20Hunza%20Paraguay.html#inicio" aria-label="Aqua Hunza Paraguay — inicio">
+      <img class="logo" src="./logo-aqua-hunza.png" alt="Logo de Aqua Hunza Paraguay, purificadores y filtros de agua">
+    </a>
+    <nav class="desktop" aria-label="Navegación principal">
+      <a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a>
+      <a href="residencial.html">Residencial</a>
+      <a href="comercial.html">Comercial</a>
+      <a href="industrial.html">Industrial</a>
+      <a href="rural.html">Agro</a>
+      <a href="agua-hidrogenada.html">Agua hidrogenada</a>
+      <a href="agua-alcalina.html">Agua alcalina</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacto.html" aria-current="page">Contacto</a>
+      <a class="cta" href="#form">Solicitar asesoramiento</a>
+    </nav>
+    <details class="mobile">
+      <summary aria-label="Abrir menú">☰</summary>
+      <div class="panel">
+        <a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a>
+        <a href="residencial.html">Residencial</a>
+        <a href="comercial.html">Comercial</a>
+        <a href="industrial.html">Industrial</a>
+        <a href="rural.html">Agro</a>
+        <a href="agua-hidrogenada.html">Agua hidrogenada</a>
+        <a href="agua-alcalina.html">Agua alcalina</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html" aria-current="page">Contacto</a>
+        <a class="cta" href="#form">Solicitar asesoramiento</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main>
+  <section class="contact" aria-labelledby="form-title">
+    <div class="wrap grid">
+      <div class="aside">
+        <p class="eyebrow">Contacto</p>
+        <h1 class="title" id="form-title">Solicitá asesoramiento sin costo</h1>
+        <p class="lead">Completá el formulario y un asesor te contactará para evaluar el origen del agua, el consumo y la solución más adecuada.</p>
+        <div class="contacts">
+          <div class="crow"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span><small>WhatsApp</small><a href="https://wa.me/595982917000?text=Hola%2C%20quisiera%20recibir%20asesoramiento%20sobre%20los%20purificadores%20y%20filtros%20de%20agua%20de%20Aqua%20Hunza." target="_blank" rel="noopener">+595 982 917 000</a></span></div>
+          <div class="crow"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span><small>Email</small><a href="mailto:contacto@aguasuper.com">contacto@aguasuper.com</a></span></div>
+          <div class="crow"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><small>Ubicación</small>Asunción, Paraguay · Cobertura nacional</span></div>
+        </div>
+        <div class="badges"><span class="badge">Asesoría sin costo</span><span class="badge">Respuesta el mismo día</span><span class="badge">Cobertura nacional</span></div>
+      </div>
+
+      <div class="card" id="form">
+        <form id="contactForm" novalidate>
+          <div class="formhead">
+            <h2>Escribinos tu consulta</h2>
+            <p>Completá tus datos y te respondemos por WhatsApp a la brevedad.</p>
+          </div>
+          <div class="field">
+            <label for="ah-nombre">Nombre y apellido</label>
+            <input id="ah-nombre" name="nombre" type="text" autocomplete="name">
+            <span class="err" data-err="nombre" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="ah-tel">Teléfono</label>
+            <input id="ah-tel" name="telefono" type="tel" autocomplete="tel" placeholder="09xx xxx xxx">
+            <span class="err" data-err="telefono" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="ah-mail">Correo electrónico</label>
+            <input id="ah-mail" name="email" type="email" autocomplete="email">
+            <span class="err" data-err="email" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="ah-ciudad">Ciudad</label>
+            <input id="ah-ciudad" name="ciudad" type="text">
+            <span class="err" data-err="ciudad" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="ah-tipo">Tipo de solución</label>
+            <select id="ah-tipo" name="tipo">
+              <option value="">Seleccionar</option>
+              <option value="Hogar (residencial)">Residencial</option>
+              <option value="Empresa (comercial)">Comercial</option>
+              <option value="Industria">Industrial</option>
+              <option value="Campo (rural)">Rural</option>
+              <option value="Agua alcalina">Agua alcalina</option>
+              <option value="Agua hidrogenada">Agua hidrogenada</option>
+            </select>
+            <span class="err" data-err="tipo" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="ah-origen">Origen del agua</label>
+            <select id="ah-origen" name="origen">
+              <option value="">Seleccionar</option>
+              <option value="Red">Red</option>
+              <option value="Pozo">Pozo</option>
+              <option value="Tajamar">Tajamar</option>
+              <option value="Otro">Otro</option>
+            </select>
+            <span class="err" data-err="origen" role="alert"></span>
+          </div>
+          <div class="field full">
+            <label for="ah-msg">Mensaje</label>
+            <textarea id="ah-msg" name="mensaje" rows="4"></textarea>
+            <span class="err" data-err="mensaje" role="alert"></span>
+          </div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="ah-hp">No completar</label>
+            <input id="ah-hp" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field full">
+            <label class="consent" for="ah-priv">
+              <input id="ah-priv" name="consent" type="checkbox">
+              <span>Acepto la <a href="Aqua%20Hunza%20Paraguay.html#privacidad">política de privacidad</a> y el tratamiento de mis datos para recibir asesoramiento.</span>
+            </label>
+            <span class="err" data-err="consent" role="alert"></span>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="submit">Enviar consulta por WhatsApp</button>
+            <span class="hint">Se abrirá WhatsApp con tu consulta ya escrita.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="cols">
+    <div>
+      <img src="./logo-aqua-hunza.png" alt="Logo de Aqua Hunza Paraguay" width="238" height="163">
+      <p class="about">Aqua Hunza Paraguay sistemas avanzados de purificación de agua</p>
+    </div>
+    <nav aria-label="Menú principal">
+      <span class="colhead">Menú</span>
+      <a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a>
+      <a href="Aqua%20Hunza%20Paraguay.html#soluciones">Soluciones</a>
+      <a href="blog.html">Blog</a>
+      <a href="Aqua%20Hunza%20Paraguay.html#faq">Preguntas frecuentes</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <nav aria-label="Soluciones">
+      <span class="colhead">Soluciones</span>
+      <a href="residencial.html">Residencial</a>
+      <a href="comercial.html">Comercial</a>
+      <a href="industrial.html">Industrial</a>
+      <a href="rural.html">Agro</a>
+      <a href="agua-alcalina.html">Agua alcalina</a>
+      <a href="agua-hidrogenada.html">Agua hidrogenada</a>
+    </nav>
+    <div class="fcol">
+      <span class="colhead">Contacto</span>
+      <a href="https://wa.me/595982917000?text=Hola%2C%20quisiera%20recibir%20asesoramiento%20sobre%20los%20purificadores%20y%20filtros%20de%20agua%20de%20Aqua%20Hunza." target="_blank" rel="noopener">WhatsApp +595 982 917 000</a>
+      <a href="mailto:contacto@aguasuper.com">contacto@aguasuper.com</a>
+      <span class="place">Asunción, Paraguay</span>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 Aqua Hunza Paraguay. Todos los derechos reservados.</span>
+    <div style="display:flex;flex-wrap:wrap;gap:14px 24px">
+      <a href="Aqua%20Hunza%20Paraguay.html#privacidad">Política de privacidad</a>
+      <a href="https://www.neura.com.py">Desarrollado por Neura</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('contactForm');
+  var PHONE='595982917000';
+  function setErr(name,msg){var el=form.querySelector('[data-err="'+name+'"]');if(el)el.textContent=msg||'';}
+  function clearErrs(){['nombre','telefono','email','ciudad','tipo','origen','mensaje','consent'].forEach(function(n){setErr(n,'');});}
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.website.value){return;} // honeypot
+    clearErrs();
+    var nombre=form.nombre.value.trim();
+    var tel=form.telefono.value.trim();
+    var email=form.email.value.trim();
+    var ok=true;
+    if(!nombre){setErr('nombre','Ingresá tu nombre.');ok=false;}
+    if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){setErr('email','Ingresá un correo válido.');ok=false;}
+    if(!tel && !email){setErr('telefono','Dejanos un teléfono o un correo.');ok=false;}
+    if(!form.consent.checked){setErr('consent','Necesitamos tu consentimiento para contactarte.');ok=false;}
+    if(!ok){var first=form.querySelector('.err:not(:empty)');if(first){var f=first.parentElement.querySelector('input,select,textarea');if(f)f.focus();}return;}
+
+    var text='Hola, quisiera asesoramiento de Aqua Hunza.\n';
+    text+='\nNombre: '+nombre;
+    if(tel)text+='\nTeléfono: '+tel;
+    if(email)text+='\nEmail: '+email;
+    if(form.ciudad.value.trim())text+='\nCiudad: '+form.ciudad.value.trim();
+    if(form.tipo.value)text+='\nTipo de solución: '+form.tipo.value;
+    if(form.origen.value)text+='\nOrigen del agua: '+form.origen.value;
+    if(form.mensaje.value.trim())text+='\nMensaje: '+form.mensaje.value.trim();
+
+    var url='https://wa.me/'+PHONE+'?text='+encodeURIComponent(text);
+    window.open(url,'_blank','noopener');
+    form.reset();
+    clearErrs();
+  });
+})();
+</script>
+</body>
+</html>
