@@ -41,7 +41,7 @@
 <header style="position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid #E4EEF3">
   <div style="max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px">
     <a href="#inicio" aria-label="Aqua Hunza Paraguay — inicio" style="display:flex;align-items:center;flex:none">
-      <img src="./logo-aqua-hunza.png" alt="Logo de Aqua Hunza Paraguay, purificadores y filtros de agua" width="238" height="163" style="height: 96px; width: 140px; display: block">
+      <img src="./logo-aqua-hunza.png" alt="Logo de Aqua Hunza Paraguay, purificadores y filtros de agua" width="238" height="163" style="height: 60px; width: 88px; display: block">
     </a>
     <nav aria-label="Navegación principal" style="flex:1;display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:nowrap">
       <a href="#inicio" style="font-size:13.5px;letter-spacing:.01em;color:#102A38;white-space:nowrap;display:none" data-nav="1">Inicio</a>
@@ -58,7 +58,7 @@
     </nav>
   </div>
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <nav aria-label="Navegación móvil" style="border-top:1px solid #E4EEF3;background:#fff;padding:10px 24px 22px;display:flex;flex-direction:column;gap:2px;max-height:70vh;overflow:auto">
+    <nav aria-label="Navegación móvil" style="position:fixed;left:0;right:0;top:82px;height:calc(100dvh - 82px);height:calc(100vh - 82px);z-index:59;border-top:1px solid #E4EEF3;background:#fff;padding:18px 24px 32px;display:flex;flex-direction:column;gap:2px;overflow:auto">
       <a href="#inicio" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:16px;color:#102A38;border-bottom:1px solid #F1F7FA">Inicio</a>
       <a href="residencial.html" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:16px;color:#102A38;border-bottom:1px solid #F1F7FA">Residencial</a>
       <a href="comercial.html" onClick="{{ closeMenu }}" style="padding:14px 4px;font-size:16px;color:#102A38;border-bottom:1px solid #F1F7FA">Comercial</a>
@@ -149,7 +149,7 @@
   
 </main>
 
-<footer style="background: #111820; color: #C3D6DF; padding: clamp(40px,5vw,60px) 0 clamp(28px,4vw,40px)">
+<footer style="background: #111820; color: #C3D6DF; padding: clamp(40px,5vw,60px) 0 clamp(80px,9vw,96px)">
   <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(32px,4vw,56px)">
     <div style="max-width:34ch">
       <img src="./logo-aqua-hunza.png" alt="Logo de Aqua Hunza Paraguay" width="238" height="163" style="height: 120px; width: 175px; display: block; filter: brightness(0) invert(1)">

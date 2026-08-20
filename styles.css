@@ -15,7 +15,7 @@ img{max-width:100%;display:block}
 /* ---------- header ---------- */
 header.site{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 header.site .bar{max-width:var(--wrap);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
-header.site img.logo{height:96px;width:140px}
+header.site img.logo{height:60px;width:88px}
 nav.desktop{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:nowrap}
 nav.desktop a{font-size:13.5px;color:var(--navy);white-space:nowrap;transition:color .2s ease}
 nav.desktop a:hover,nav.desktop a[aria-current]{color:var(--teal)}
