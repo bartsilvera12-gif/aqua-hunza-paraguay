@@ -28,7 +28,7 @@ details.mobile .panel{position:absolute;left:0;right:0;top:100%;background:#fff;
 details.mobile .panel a{padding:14px 4px;font-size:16px;color:var(--navy);border-bottom:1px solid #F1F7FA}
 details.mobile .panel a:last-child{border-bottom:none}
 details.mobile .panel a.cta{margin-top:12px;background:var(--teal);color:#fff;text-align:center;font-weight:600;padding:16px;border-radius:999px;border:none}
-@media (max-width:1024px){nav.desktop{display:none}details.mobile{display:block}}
+@media (max-width:1024px){nav.desktop{display:none}details.mobile{display:block}header.site img.logo{height:54px;width:78px}}
 
 /* ---------- page hero (banda navy) ---------- */
 .page-hero{background:var(--navy);color:#fff;padding:clamp(120px,16vw,180px) 0 clamp(56px,8vw,96px)}
