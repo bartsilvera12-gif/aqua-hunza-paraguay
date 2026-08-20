@@ -76,6 +76,11 @@ h3.sub{font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(19px,2.1vw
 .navy .feature p{color:#C3D6DF}
 @media (max-width:520px){.feature{grid-template-columns:46px 1fr;gap:14px}.feature .ico{width:46px;height:46px;border-radius:12px}.feature .ico svg{width:25px;height:25px}}
 
+/* image gallery (gráficos de beneficios) */
+.img-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(18px,2.6vw,34px);margin-top:clamp(36px,4vw,56px)}
+.img-gallery img{width:100%;height:auto;display:block;border-radius:14px;transition:transform .5s cubic-bezier(.16,.84,.3,1)}
+.img-gallery a:hover img,.img-gallery img:hover{transform:translateY(-5px)}
+
 /* bullet list */
 ul.ticks{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px;max-width:70ch}
 ul.ticks li{position:relative;padding-left:34px;color:#3C5464;font-size:16.5px;line-height:1.6}
