@@ -76,6 +76,11 @@ h3.sub{font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(19px,2.1vw
 .navy .feature p{color:#C3D6DF}
 @media (max-width:520px){.feature{grid-template-columns:46px 1fr;gap:14px}.feature .ico{width:46px;height:46px;border-radius:12px}.feature .ico svg{width:25px;height:25px}}
 
+/* entrance reveal (animación de entrada de textos) */
+.reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:0;transform:translateY(18px)}
+.reveal-on main .rv-in{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.3,1)}
+@media (prefers-reduced-motion:reduce){.reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:1;transform:none}}
+
 /* image gallery (gráficos de beneficios) */
 .img-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(18px,2.6vw,34px);margin-top:clamp(36px,4vw,56px)}
 .img-gallery img{width:100%;height:auto;display:block;border-radius:14px;transition:transform .5s cubic-bezier(.16,.84,.3,1)}
