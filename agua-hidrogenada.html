@@ -44,7 +44,289 @@
 <section class="block tint"><div class="wrap"><div class="mt-head"><h2 class="sec">¿Por qué es tan especial?</h2></div><div class="prose"><p>La clave está en el tamaño de la molécula. Al ser la más pequeña que existe, el hidrógeno presenta características particulares que son objeto de estudio científico:</p></div>
 <ul class="ticks"><li>Penetración celular: puede atravesar membranas celulares e incluso la barrera hematoencefálica.</li><li>Acción antioxidante selectiva: se estudia su capacidad de neutralizar radicales libres dañinos sin interferir con procesos biológicos esenciales.</li><li>Difusión rápida: se distribuye con facilidad hacia tejidos y órganos.</li></ul></div></section>
 <section class="block"><div class="wrap"><div class="mt-head"><h2 class="sec">Respaldo en la investigación internacional</h2></div><div class="prose"><p>El Molecular Hydrogen Institute (MHI) es una organización científica internacional dedicada al estudio del hidrógeno molecular. Según sus registros, existen más de 3.000 estudios científicos, incluyendo más de 200 estudios clínicos en humanos.</p><p>Parte de la información médica de referencia proviene de la National Library of Medicine (NLM) de los Estados Unidos, la biblioteca médica más grande del mundo, a través de PubMed.</p></div></div></section>
-<section class="block tint"><div class="wrap"><div class="mt-head"><h2 class="sec">Áreas bajo estudio científico</h2></div>
+<section class="medical-info">
+  <div class="medical-info__decoration"></div>
+
+  <div class="medical-info__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="m9 12 2 2 4-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+
+  <div class="medical-info__content">
+    <span class="medical-info__label">Información verificada</span>
+
+    <h2>Contenido informativo y educativo</h2>
+
+    <p>
+      La siguiente información médica incluida en nuestros artículos y en los
+      enlaces correspondientes de la Biblioteca Nacional de Medicina de los
+      Estados Unidos (NLM), la biblioteca médica más grande del mundo, proviene
+      de su sitio web oficial del Gobierno de los Estados Unidos.
+    </p>
+
+    <p>
+      La NLM es una agencia gubernamental dedicada a la difusión de información
+      científica para profesionales de la salud, investigadores y el público
+      general a nivel mundial.
+    </p>
+
+    <a
+      class="medical-info__button"
+      href="https://pubmed.ncbi.nlm.nih.gov/37269385/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span>Ver publicación científica en PubMed</span>
+
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M7 17 17 7M8 7h9v9"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <div class="medical-info__source">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle
+          cx="12"
+          cy="12"
+          r="9"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <path
+          d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+      </svg>
+
+      <span>Sitio oficial del Gobierno de los Estados Unidos.</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .medical-info,
+  .medical-info * {
+    box-sizing: border-box;
+  }
+
+  .medical-info {
+    --blue: #3168d5;
+    --blue-dark: #1747a9;
+    --gold: #e3ad00;
+    --red: #98152d;
+    --background: #f5f8fc;
+
+    position: relative;
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 32px;
+    width: min(100% - 40px, 1500px);
+    margin: 40px auto;
+    padding: 52px 64px 52px 44px;
+    overflow: hidden;
+    border: 1px solid rgba(49, 104, 213, 0.08);
+    border-left: 7px solid var(--gold);
+    border-radius: 32px;
+    background:
+      radial-gradient(
+        circle at 95% 5%,
+        rgba(49, 104, 213, 0.08),
+        transparent 24%
+      ),
+      var(--background);
+    box-shadow: 0 22px 55px rgba(25, 46, 78, 0.13);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .medical-info__decoration {
+    position: absolute;
+    right: -70px;
+    bottom: -110px;
+    width: 280px;
+    height: 280px;
+    border: 55px solid rgba(49, 104, 213, 0.045);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .medical-info__icon {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    color: #fff;
+    border-radius: 26px;
+    background: linear-gradient(145deg, #f4c400, #d69400);
+    box-shadow: 0 16px 32px rgba(218, 159, 0, 0.28);
+    transform: rotate(-3deg);
+  }
+
+  .medical-info__icon svg {
+    width: 45px;
+    height: 45px;
+    transform: rotate(3deg);
+  }
+
+  .medical-info__content {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+  }
+
+  .medical-info__label {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 7px 13px;
+    color: var(--blue-dark);
+    border: 1px solid rgba(49, 104, 213, 0.18);
+    border-radius: 999px;
+    background: rgba(49, 104, 213, 0.08);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .medical-info h2 {
+    margin: 0 0 22px;
+    color: var(--blue);
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .medical-info p {
+    margin: 0 0 10px;
+    color: var(--red);
+    font-size: clamp(17px, 1.4vw, 21px);
+    line-height: 1.75;
+  }
+
+  .medical-info__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-width: min(100%, 650px);
+    margin-top: 30px;
+    padding: 19px 24px;
+    color: #fff;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #151515, #292929);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.17);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+  }
+
+  .medical-info__button svg {
+    flex: 0 0 auto;
+    width: 23px;
+    height: 23px;
+    transition: transform 0.25s ease;
+  }
+
+  .medical-info__button:hover {
+    color: #fff;
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+    box-shadow: 0 16px 32px rgba(49, 104, 213, 0.25);
+    transform: translateY(-3px);
+  }
+
+  .medical-info__button:hover svg {
+    transform: translate(3px, -3px);
+  }
+
+  .medical-info__source {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    color: #7b6400;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .medical-info__source svg {
+    flex: 0 0 auto;
+    width: 21px;
+    height: 21px;
+  }
+
+  @media (max-width: 768px) {
+    .medical-info {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      width: min(100% - 24px, 1500px);
+      margin: 24px auto;
+      padding: 32px 24px;
+      border-left-width: 5px;
+      border-radius: 24px;
+    }
+
+    .medical-info__icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 21px;
+    }
+
+    .medical-info__icon svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .medical-info h2 {
+      font-size: 32px;
+    }
+
+    .medical-info p {
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .medical-info__button {
+      width: 100%;
+      min-width: 0;
+      padding: 17px 18px;
+      font-size: 15px;
+    }
+  }
+</style>
+  <section class="block tint"><div class="wrap"><div class="mt-head"><h2 class="sec">Áreas bajo estudio científico</h2></div>
 <div class="features"><div class="feature"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span><div><h4>Metabolismo y estrés oxidativo</h4><p>Líneas de investigación estudian su rol antioxidante y en el metabolismo de lípidos y glucosa.</p></div></div><div class="feature"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21l8.8-8.3a5 5 0 0 0 0-7.1z"/></svg></span><div><h4>Salud cardiovascular</h4><p>Se estudia su efecto sobre la función vascular y marcadores de oxidación.</p></div></div><div class="feature"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11"/><path d="M3 8l2-2 3 3-2 2z"/><path d="M16 21l2-2 3-3-2-2-3 3z"/></svg></span><div><h4>Ejercicio y recuperación</h4><p>Investigaciones en deportistas analizan fatiga, rendimiento y recuperación.</p></div></div><div class="feature"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/></svg></span><div><h4>Antioxidante celular</h4><p>El interés central está en su capacidad antioxidante a nivel celular y mitocondrial.</p></div></div></div>
 <div class="prose"><p>El índice de temas estudiados por la comunidad científica incluye, entre otros: hidrógeno molecular como gas médico, aplicaciones en deporte y ejercicio, efectos gastrointestinales y estudios sobre memoria. Publicamos los enlaces a las fuentes (MHI, PubMed / NLM) para su consulta.</p></div></div></section>
 <section class="block"><div class="wrap"><div class="mt-head"><h2 class="sec">Estudios científicos publicados</h2></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.2vw,26px);margin-top:clamp(22px,2.8vw,34px)"><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Revisión científica</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Terapia con hidrógeno molecular: revisión de estudios y resultados clínicos</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Revisión que identificó 81 ensayos clínicos y 64 publicaciones sobre estudios en humanos con hidrógeno molecular (H₂). Los autores analizan áreas de investigación y los desafíos de administración, y discuten si el hidrógeno podría integrarse a la práctica clínica en el futuro.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Johnsen, Hiorth & Klaveness (2023) · <a href="https://pubmed.ncbi.nlm.nih.gov/38067515/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 38067515</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Revisión · base científica</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Hidrógeno molecular como gas médico preventivo y terapéutico</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Describe cómo el H₂ reacciona con oxidantes fuertes (como el radical hidroxilo) y cómo regula la expresión de ciertos genes, con efectos antiinflamatorios reportados en experimentos. Revisa las vías de consumo (inhalación, agua con H₂ disuelto, etc.).</p><p style="font-size:12.5px;color:#8298A6;margin:0">Ohsawa et al. (2014) · <a href="https://pubmed.ncbi.nlm.nih.gov/24769081/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 24769081</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Estudio piloto · 10 atletas</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Agua rica en hidrógeno y fatiga muscular por ejercicio agudo en atletas</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Ensayo piloto doble ciego cruzado con 10 futbolistas. Tras ejercicio intenso, el grupo placebo elevó el lactato en sangre, mientras que con agua hidrogenada ese aumento fue menor y el rendimiento máximo no cayó en la fase inicial. Los autores señalan que se necesita más investigación.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Aoki et al. — Univ. de Tsukuba · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3395574/" target="_blank" rel="noopener" style="color:#279CBC">PubMed Central: PMC3395574</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Ensayo controlado · 12 personas</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Mejora en respuestas ventilatoria, perceptiva y de lactato al ejercicio</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Estudio cruzado, aleatorizado, doble ciego y controlado con placebo en 12 hombres sanos. La toma de 600 ml de agua rica en hidrógeno antes del ejercicio se asoció con menor lactato en sangre a intensidades altas y con una menor percepción del esfuerzo.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Botek et al. (2019) · <a href="https://pubmed.ncbi.nlm.nih.gov/31574544/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 31574544</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Estudio piloto · 36 atletas</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Hidrógeno oral y tópico para lesiones de tejidos blandos en el deporte</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Piloto con 36 atletas profesionales lesionados. Sumar hidrógeno (oral y tópico) al tratamiento habitual se asoció con un retorno más rápido del rango de movimiento articular. Los propios autores describen los resultados como preliminares.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Ostojic et al. (2014) · <a href="https://pubmed.ncbi.nlm.nih.gov/25295663/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 25295663</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Modelo animal (ratones)</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Efectos neuroprotectores en la retinitis pigmentosa</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Estudio en ratones (modelo rd6). El agua con alto contenido de H₂ se asoció con mayor grosor de la retina y menor pérdida de fotorreceptores. Es un estudio en animales: sus resultados no son directamente extrapolables a las personas.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Estudio en modelo animal (2022) · <a href="https://pubmed.ncbi.nlm.nih.gov/35948585/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 35948585</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Modelo animal (ratas)</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Agua rica en hidrógeno en modelos de diabetes tipo 2</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">En ratas con diabetes tipo 2 inducida, beber agua con H₂ durante 3 semanas se asoció con menores niveles de glucosa, colesterol total, estrés oxidativo e inflamación. Estudio preclínico en animales, no un ensayo en humanos.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Zheng et al. (2021) · <a href="https://pubmed.ncbi.nlm.nih.gov/33830396/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 33830396</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Estudio de laboratorio (in vitro)</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Agua alcalina pH 8.8 y la enfermedad por reflujo</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Estudios de laboratorio (in vitro): el agua alcalina de pH 8.8 inactivó de forma irreversible la pepsina humana y mostró una alta capacidad para amortiguar el ácido. Es un hallazgo in vitro; los autores lo plantean como base para más investigación.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Koufman & Johnston (2012) · <a href="https://pubmed.ncbi.nlm.nih.gov/22844861/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 22844861</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Modelo animal (ratones)</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Agua rica en hidrógeno en un modelo de enfermedad de Alzheimer</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">En ratones modelo de Alzheimer (3xTg) tratados 7 meses, se reportó menor pérdida sináptica y menor neuroinflamación. Es investigación preliminar en animales, no evidencia de tratamiento en humanos.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Lin et al. (2021) · <a href="https://pubmed.ncbi.nlm.nih.gov/34269217/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 34269217</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Estudio piloto · 18 pacientes</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Hidrógeno y fotobiomodulación en la enfermedad de Parkinson</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Prueba de concepto de 2 semanas en 18 pacientes. Los autores reportaron una reducción de las puntuaciones de la escala UPDRS y ausencia de eventos adversos, y remarcan que hace falta un ensayo clínico de mayor escala para confirmarlo.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Hong et al. (2021) · <a href="https://pubmed.ncbi.nlm.nih.gov/33530211/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 33530211</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Ensayo controlado · 12 pacientes</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Agua rica en hidrógeno e hígado graso no alcohólico (NAFLD)</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Ensayo cruzado, doble ciego y controlado con placebo en 12 pacientes con sobrepeso. Tomar 1 litro diario durante 28 días se asoció con una reducción de la grasa en el hígado (medida por resonancia) frente al placebo. Muestra pequeña.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Korovljev et al. (2019) · <a href="https://pubmed.ncbi.nlm.nih.gov/30982748/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 30982748</a></p></article><article style="border:1px solid #E4EEF3;border-radius:14px;padding:20px 22px;background:#fff;box-shadow:0 16px 34px -28px rgba(16,42,56,.4)"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#279CBC;background:#EAF3F7;padding:5px 11px;border-radius:999px;margin-bottom:12px">Estudio en deportistas</span><h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#102A38;margin:0 0 9px;line-height:1.32">Rendimiento muscular y dolor muscular tardío tras entrenamiento de resistencia</h3><p style="color:#54707F;font-size:14.5px;line-height:1.62;margin:0 0 12px;text-wrap:pretty">Investigación sobre el consumo de agua rica en hidrógeno y su relación con la respuesta del lactato, marcadores antioxidantes y el alivio del dolor muscular de aparición tardía tras el entrenamiento de resistencia.</p><p style="font-size:12.5px;color:#8298A6;margin:0">Botek et al. (2022) · <a href="https://pubmed.ncbi.nlm.nih.gov/33555824/" target="_blank" rel="noopener" style="color:#279CBC">PubMed PMID: 33555824</a></p></article></div></div></section>
