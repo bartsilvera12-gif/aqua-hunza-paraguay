@@ -57,7 +57,9 @@ h2.sec::before{content:"";display:block;width:46px;height:4px;border-radius:3px;
 .navy h2.sec::before{background:linear-gradient(90deg,#4FB6D4,#4FD0E8)}
 h3.sub{font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(19px,2.1vw,25px);line-height:1.25;letter-spacing:-.01em;color:var(--navy);margin:0}
 .navy h3.sub{color:#fff}
-.prose{max-width:74ch}
+.mt-head{margin-bottom:clamp(16px,1.9vw,24px)}
+.prose{max-width:74ch;margin-top:clamp(16px,1.8vw,24px)}
+h3.sub{margin-bottom:clamp(4px,1vw,10px)}
 .prose p{color:#3C5464;font-size:17px;line-height:1.75;margin-top:18px;text-wrap:pretty}
 .navy .prose p{color:#C3D6DF}
 .prose p:first-child{margin-top:0}
@@ -81,7 +83,7 @@ h3.sub{font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(19px,2.1vw
 /* texto + imagen */
 .split-media{display:grid;grid-template-columns:1fr;gap:clamp(24px,3vw,44px);align-items:center;margin-top:clamp(18px,2.4vw,34px)}
 @media (min-width:800px){.split-media{grid-template-columns:1.1fr .9fr}}
-.split-media img{width:100%;height:auto;display:block;border-radius:20px;box-shadow:0 26px 60px -42px rgba(16,42,56,.5)}
+.split-media img{max-width:100%;max-height:480px;width:auto;height:auto;display:block;justify-self:center;border-radius:20px;box-shadow:0 26px 60px -42px rgba(16,42,56,.5)}
 
 /* entrance reveal (animación de entrada de textos) */
 .reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:0;transform:translateY(18px)}
