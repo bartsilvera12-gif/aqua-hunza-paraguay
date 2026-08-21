@@ -78,6 +78,11 @@ h3.sub{font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(19px,2.1vw
 .navy .feature p{color:#C3D6DF}
 @media (max-width:520px){.feature{grid-template-columns:46px 1fr;gap:14px}.feature .ico{width:46px;height:46px;border-radius:12px}.feature .ico svg{width:25px;height:25px}}
 
+/* texto + imagen */
+.split-media{display:grid;grid-template-columns:1fr;gap:clamp(24px,3vw,44px);align-items:center;margin-top:clamp(18px,2.4vw,34px)}
+@media (min-width:800px){.split-media{grid-template-columns:1.1fr .9fr}}
+.split-media img{width:100%;height:auto;display:block;border-radius:20px;box-shadow:0 26px 60px -42px rgba(16,42,56,.5)}
+
 /* entrance reveal (animación de entrada de textos) */
 .reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:0;transform:translateY(18px)}
 .reveal-on main .rv-in{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.3,1)}
