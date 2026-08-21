@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Panel de blogs — Aqua Hunza</title>
+<link rel="icon" type="image/png" href="./favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#102A38;--teal:#279CBC;--ink:#111820;--line:#E4EEF3;--muted:#5A7383;--soft:#F2F9FB}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:#EEF6FA;line-height:1.5}
+  a{color:var(--teal);text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:24px}
+  header.top{background:var(--navy);color:#fff}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 24px}
+  header.top h1{font-family:Manrope,sans-serif;font-weight:700;font-size:20px}
+  header.top .sub{color:#9FB6C2;font-size:13px}
+  header.top a{color:#4FD0E8}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:10px;border:none;cursor:pointer;transition:filter .2s ease,transform .2s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--teal);color:#fff}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+  .btn-danger{background:#fff;border:1px solid #E7B8B3;color:#B3261E}
+  .btn-sm{padding:8px 12px;font-size:13px;border-radius:8px}
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+  .grow{flex:1}
+  /* gate */
+  #gate{position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:50}
+  #gate .card{background:#fff;border-radius:16px;padding:34px;max-width:360px;width:calc(100% - 40px);text-align:center;box-shadow:0 30px 70px -40px rgba(0,0,0,.6)}
+  #gate h2{font-family:Manrope,sans-serif;color:var(--navy);margin-bottom:8px}
+  #gate p{color:var(--muted);font-size:14px;margin-bottom:18px}
+  input,select,textarea{width:100%;background:#F7FBFD;border:1.5px solid #E1EDF3;border-radius:10px;padding:12px 14px;font:inherit;font-size:15px;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(39,156,188,.14);background:#fff}
+  label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin:0 0 6px}
+  .field{margin-bottom:16px}
+  /* list */
+  .post{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:14px;align-items:center;margin-bottom:12px}
+  .post .thumb{width:96px;height:64px;flex:none;border-radius:9px;background:#DDEBF2 center/cover no-repeat;overflow:hidden}
+  .post .meta{flex:1;min-width:0}
+  .post .meta .cat{color:var(--teal);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .post .meta h3{font-family:Manrope,sans-serif;font-weight:700;font-size:16px;color:var(--navy);margin:2px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .post .meta .ex{color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .post .tags{display:flex;gap:6px;margin-top:4px}
+  .tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px}
+  .tag.pub{background:#E3F6EC;color:#1E7F4F}
+  .tag.draft{background:#FDECEA;color:#B3261E}
+  .tag.builtin{background:#EAF3F7;color:var(--teal)}
+  .post .acts{display:flex;gap:6px;flex-wrap:wrap}
+  /* editor */
+  #editor{display:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:20px}
+  #editor.on{display:block}
+  #editor h2{font-family:Manrope,sans-serif;color:var(--navy);margin-bottom:16px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.row2{grid-template-columns:1fr}.post{flex-wrap:wrap}.post .acts{width:100%}}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:5px}
+  .imgprev{margin-top:8px;max-height:120px;border-radius:8px;display:none}
+  .note{background:#FFF7E6;border:1px solid #F3E2B8;color:#7A5B10;font-size:13px;padding:12px 14px;border-radius:10px;margin-bottom:16px}
+  #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s ease;z-index:60}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="card">
+    <h2>Panel de blogs</h2>
+    <p>Ingresá la contraseña para administrar.</p>
+    <div class="field"><input id="gatePass" type="password" placeholder="Contraseña" autocomplete="current-password"></div>
+    <button class="btn btn-primary" style="width:100%" onclick="tryGate()">Entrar</button>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <h1>Panel de blogs · Aqua Hunza</h1>
+      <div class="sub">Crear, editar, borrar y publicar notas · <a href="blog.html" target="_blank">ver el blog ↗</a></div>
+    </div>
+    <button class="btn btn-primary" onclick="newPost()">+ Nuevo blog</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="note">
+    <b>Cómo se publica:</b> lo que creás/editás se guarda en <b>este navegador</b> y ya lo ves en el blog. Para que aparezca para <b>todos</b> los visitantes, tocá <b>“Exportar para publicar”</b> y pasáselo a tu desarrollador (o pedime que lo suba al repo).
+  </div>
+
+  <!-- editor -->
+  <div id="editor">
+    <h2 id="editorTitle">Nuevo blog</h2>
+    <input type="hidden" id="f_id">
+    <input type="hidden" id="f_builtin">
+    <div class="row2">
+      <div class="field"><label>Título</label><input id="f_title" placeholder="Título de la nota"></div>
+      <div class="field"><label>Categoría</label><input id="f_cat" list="cats" placeholder="Ej: Tecnología">
+        <datalist id="cats"></datalist></div>
+    </div>
+    <div class="field"><label>Resumen (aparece en la tarjeta)</label><textarea id="f_excerpt" rows="2" placeholder="Un resumen corto…"></textarea></div>
+    <div class="field">
+      <label>Imagen</label>
+      <input id="f_img" placeholder="Nombre en assets/img (ej: comof.jpg) o subí una imagen">
+      <div class="bar" style="margin:8px 0 0"><input type="file" id="f_file" accept="image/*" style="width:auto"><span class="hint">Subir imagen (se guarda dentro de la nota)</span></div>
+      <img id="imgprev" class="imgprev" alt="">
+    </div>
+    <div class="field" id="contentWrap">
+      <label>Contenido de la nota</label>
+      <textarea id="f_content" rows="10" placeholder="Escribí el contenido. Podés usar HTML básico: <h2>Subtítulo</h2>, <p>párrafo</p>, <ul><li>ítem</li></ul>…"></textarea>
+      <div class="hint">Se muestra en la página de la nota. (Las notas “de fábrica” usan su propia página; ahí este campo no aplica.)</div>
+    </div>
+    <div class="field"><label><input type="checkbox" id="f_published" style="width:auto;margin-right:8px" checked>Publicada (visible en el blog)</label></div>
+    <div class="bar">
+      <button class="btn btn-primary" onclick="savePost()">Guardar</button>
+      <button class="btn btn-ghost" onclick="closeEditor()">Cancelar</button>
+    </div>
+  </div>
+
+  <div class="bar">
+    <h2 style="font-family:Manrope,sans-serif;color:var(--navy);font-size:18px">Notas</h2>
+    <span class="grow"></span>
+    <button class="btn btn-navy btn-sm" onclick="exportData()">⬇ Exportar para publicar</button>
+    <button class="btn btn-ghost btn-sm" onclick="resetAll()">Restablecer</button>
+  </div>
+  <div id="list"></div>
+</div>
+
+<div id="toast"></div>
+
+<script src="./blog-data.js"></script>
+<script>
+var PASS = "aquahunza"; // contraseña del panel (cambiala si querés)
+function tryGate(){
+  var v=document.getElementById('gatePass').value;
+  if(v===PASS || sessionStorage.getItem('ah_admin')==='1'){ sessionStorage.setItem('ah_admin','1'); document.getElementById('gate').style.display='none'; render(); }
+  else { toast('Contraseña incorrecta'); }
+}
+if(sessionStorage.getItem('ah_admin')==='1'){ document.getElementById('gate').style.display='none'; }
+document.getElementById('gatePass').addEventListener('keydown',function(e){if(e.key==='Enter')tryGate();});
+
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2200);}
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function imgUrl(v){ if(!v) return ''; if(v.indexOf('data:')===0||v.indexOf('http')===0||v.indexOf('/')!==-1) return v; return './assets/img/'+v; }
+
+function render(){
+  var all=AquaBlog.getAll();
+  // categorías para el datalist
+  var cats={}; all.forEach(function(p){if(p.cat)cats[p.cat]=1;});
+  document.getElementById('cats').innerHTML=Object.keys(cats).map(function(c){return '<option value="'+esc(c)+'">';}).join('');
+  var html=all.map(function(p,i){
+    var pub = p.published!==false;
+    return '<div class="post">'+
+      '<div class="thumb" style="background-image:url(\''+imgUrl(p.img)+'\')"></div>'+
+      '<div class="meta"><div class="cat">'+esc(p.cat||'')+'</div>'+
+      '<h3>'+esc(p.title||'(sin título)')+'</h3>'+
+      '<div class="ex">'+esc(p.excerpt||'')+'</div>'+
+      '<div class="tags">'+(pub?'<span class="tag pub">Publicada</span>':'<span class="tag draft">Borrador</span>')+(p.builtin?'<span class="tag builtin">De fábrica</span>':'')+'</div>'+
+      '</div>'+
+      '<div class="acts">'+
+        '<button class="btn btn-ghost btn-sm" onclick="editPost(\''+p.id+'\')">Editar</button>'+
+        '<button class="btn btn-ghost btn-sm" onclick="togglePub(\''+p.id+'\')">'+(pub?'Despublicar':'Publicar')+'</button>'+
+        '<button class="btn btn-ghost btn-sm" onclick="move(\''+p.id+'\',-1)">↑</button>'+
+        '<button class="btn btn-ghost btn-sm" onclick="move(\''+p.id+'\',1)">↓</button>'+
+        '<button class="btn btn-danger btn-sm" onclick="delPost(\''+p.id+'\')">Borrar</button>'+
+      '</div></div>';
+  }).join('');
+  document.getElementById('list').innerHTML=html||'<p style="color:var(--muted)">No hay notas.</p>';
+}
+
+function newPost(){ openEditor({id:'',title:'',cat:'',excerpt:'',img:'',content:'',published:true,builtin:false}); }
+function editPost(id){ var p=AquaBlog.getPost(id); if(p)openEditor(p); }
+function openEditor(p){
+  document.getElementById('editor').classList.add('on');
+  document.getElementById('editorTitle').textContent = p.id? 'Editar blog' : 'Nuevo blog';
+  document.getElementById('f_id').value=p.id||'';
+  document.getElementById('f_builtin').value=p.builtin?'1':'';
+  document.getElementById('f_title').value=p.title||'';
+  document.getElementById('f_cat').value=p.cat||'';
+  document.getElementById('f_excerpt').value=p.excerpt||'';
+  document.getElementById('f_img').value=p.img||'';
+  document.getElementById('f_content').value=p.content||'';
+  document.getElementById('f_published').checked=p.published!==false;
+  var cw=document.getElementById('contentWrap'); cw.style.opacity=p.builtin?'.5':'1';
+  var prev=document.getElementById('imgprev'); if(p.img){prev.src=imgUrl(p.img);prev.style.display='block';}else{prev.style.display='none';}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function closeEditor(){ document.getElementById('editor').classList.remove('on'); }
+
+document.getElementById('f_file').addEventListener('change',function(e){
+  var f=e.target.files[0]; if(!f)return;
+  if(f.size>1500000){ toast('Imagen muy pesada (máx ~1.5MB)'); return; }
+  var r=new FileReader(); r.onload=function(){ document.getElementById('f_img').value=r.result; var p=document.getElementById('imgprev'); p.src=r.result; p.style.display='block'; }; r.readAsDataURL(f);
+});
+document.getElementById('f_img').addEventListener('input',function(){var p=document.getElementById('imgprev');var v=this.value;if(v){p.src=imgUrl(v);p.style.display='block';}else p.style.display='none';});
+
+function savePost(){
+  var all=AquaBlog.getAll();
+  var id=document.getElementById('f_id').value;
+  var title=document.getElementById('f_title').value.trim();
+  if(!title){ toast('Poné un título'); return; }
+  var data={
+    title:title,
+    cat:document.getElementById('f_cat').value.trim()||'General',
+    excerpt:document.getElementById('f_excerpt').value.trim(),
+    img:document.getElementById('f_img').value.trim(),
+    content:document.getElementById('f_content').value,
+    published:document.getElementById('f_published').checked,
+    builtin:document.getElementById('f_builtin').value==='1'
+  };
+  if(id){ // editar
+    for(var i=0;i<all.length;i++){ if(all[i].id===id){ for(var k in data) all[i][k]=data[k]; if(!all[i].builtin) all[i].url='articulo.html?id='+id; break; } }
+  } else { // nuevo
+    var nid=AquaBlog.slugify(title); var base=nid,n=2; while(all.some(function(p){return p.id===nid;})){ nid=base+'-'+n; n++; }
+    data.id=nid; data.builtin=false; data.url='articulo.html?id='+nid; all.unshift(data);
+  }
+  AquaBlog.save(all); closeEditor(); render(); toast('Guardado ✓');
+}
+function delPost(id){ if(!confirm('¿Borrar esta nota?'))return; var all=AquaBlog.getAll().filter(function(p){return p.id!==id;}); AquaBlog.save(all); render(); toast('Borrada'); }
+function togglePub(id){ var all=AquaBlog.getAll(); all.forEach(function(p){if(p.id===id)p.published=(p.published===false);}); AquaBlog.save(all); render(); }
+function move(id,dir){ var all=AquaBlog.getAll(); var i=all.findIndex(function(p){return p.id===id;}); var j=i+dir; if(i<0||j<0||j>=all.length)return; var t=all[i];all[i]=all[j];all[j]=t; AquaBlog.save(all); render(); }
+function resetAll(){ if(!confirm('Descartar tus cambios y volver a los datos publicados?'))return; AquaBlog.resetSeed(); render(); toast('Restablecido'); }
+
+function exportData(){
+  var all=AquaBlog.getAll();
+  var seed='window.BLOG_SEED = '+JSON.stringify(all,null,2)+';\n';
+  var header='/* Generado por el panel de admin. Reemplazá el bloque BLOG_SEED de blog-data.js con esto y commiteá al repo. */\n';
+  var body=header+seed;
+  var blob=new Blob([body],{type:'text/javascript'}); var url=URL.createObjectURL(blob);
+  var a=document.createElement('a'); a.href=url; a.download='blog-seed.js'; a.click(); URL.revokeObjectURL(url);
+  toast('Archivo descargado — pasáselo a tu dev o pedime que lo suba');
+}
+
+if(document.getElementById('gate').style.display==='none') render();
+</script>
+</body>
+</html>
