@@ -10,7 +10,7 @@
 window.BLOG_SEED = [
   { id: "como-funciona", title: "¿Cómo funciona?", cat: "Tecnología", img: "comof.jpg", url: "como-funciona.html", builtin: true,
     excerpt: "Conocé cómo funcionan los procesos de purificación de última generación para toda la casa." },
-  { id: "soluciones-rurales", title: "Soluciones rurales", cat: "Sector rural", img: "desalinizacion-ganado333.jpg", url: "soluciones-rurales.html", builtin: true,
+  { id: "soluciones-rurales", title: "Soluciones rurales", cat: "Sector rural", img: "hero33.webp", url: "soluciones-rurales.html", builtin: true,
     excerpt: "Filtros de agua para tajamares del Chaco Paraguayo." },
   { id: "piel-y-cabello", title: "Piel y cabello", cat: "Cuidado personal", img: "piel-cabello2.jpg", url: "piel-y-cabello.html", builtin: true,
     excerpt: "Protegé tu piel y cabello con purificadores de agua Aqua Hunza." },
