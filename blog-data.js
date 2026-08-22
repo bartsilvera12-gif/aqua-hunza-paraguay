@@ -9,25 +9,25 @@
    ============================================================ */
 window.BLOG_SEED = [
   { id: "como-funciona", title: "¿Cómo funciona?", cat: "Tecnología", img: "comof.jpg", url: "como-funciona.html", builtin: true,
-    excerpt: "Conocé cómo funcionan los procesos de purificación de última generación para toda la casa." },
-  { id: "soluciones-rurales", title: "Soluciones rurales", cat: "Sector rural", img: "hero33.webp", url: "soluciones-rurales.html", builtin: true,
+    excerpt: "Conocé cómo funciona los procesos de Purificación de última generación para toda la casa." },
+  { id: "soluciones-rurales", title: "Soluciones Rurales", cat: "Sector rural", img: "hero33.webp", url: "soluciones-rurales.html", builtin: true,
     excerpt: "Filtros de agua para tajamares del Chaco Paraguayo." },
-  { id: "piel-y-cabello", title: "Piel y cabello", cat: "Cuidado personal", img: "piel-cabello2.jpg", url: "piel-y-cabello.html", builtin: true,
+  { id: "piel-y-cabello", title: "Piel y Cabello", cat: "Cuidado personal", img: "piel-cabello2.jpg", url: "piel-y-cabello.html", builtin: true,
     excerpt: "Protegé tu piel y cabello con purificadores de agua Aqua Hunza." },
-  { id: "ganaderia-rentable", title: "Ganadería rentable", cat: "Ganadería", img: "campo-rural33.jpg", url: "ganaderia-rentable.html", builtin: true,
-    excerpt: "¿Sabías que la calidad del agua puede ser la clave para maximizar el crecimiento y la rentabilidad de tu ganado?" },
-  { id: "notas-tecnicas", title: "Notas técnicas", cat: "Notas técnicas", img: "rural-system2.jpg", url: "notas-tecnicas.html", builtin: true,
-    excerpt: "Notas de Pablo Ott sobre los efectos del consumo de agua y su impacto en la performance animal." },
-  { id: "clean-water", title: "Why Clean Water Is Essential for Cattle & Buffalo Health", cat: "Ganadería", img: "rural-hero.jpg", url: "clean-water.html", builtin: true,
-    excerpt: "El agua limpia es esencial para la salud, el crecimiento y la producción de leche del ganado." },
-  { id: "start-thinking", title: "Start Thinking: Water for Livestock", cat: "Ganadería", img: "blog-cattle-1.jpg", url: "start-thinking.html", builtin: true,
-    excerpt: "El consumo de materia seca del ganado está directamente relacionado con el agua que bebe." },
-  { id: "calidad-agua", title: "Evaluando la calidad del agua para el ganado", cat: "Ganadería", img: "blog-cattle-2.jpg", url: "calidad-agua.html", builtin: true,
+  { id: "ganaderia-rentable", title: "Ganaderia Rentable", cat: "Ganadería", img: "campo-rural33.jpg", url: "ganaderia-rentable.html", builtin: true,
+    excerpt: "¿Sabías que la calidad del agua puede ser la clave para maximizar el crecimiento y la rentabilidad de tu ganado de engorde?" },
+  { id: "notas-tecnicas", title: "Notas Técnicas", cat: "Notas técnicas", img: "NT-1-600x450.jpg", url: "notas-tecnicas.html", builtin: true,
+    excerpt: "En esta sección encontrarás notas técnicas elaboradas por nuestro director Pablo Ott, vinculadas a los efectos del consumo de agua, y su impacto en la performance animal." },
+  { id: "clean-water", title: "Why Clean Water Is Essential for Cattle & Buffalo Health", cat: "Ganadería", img: "Untitled-design-1-1.jpg", url: "clean-water.html", builtin: true,
+    excerpt: "Water is life—not just for humans but for cattle and buffaloes too. Just like us, these animals need clean and fresh water every day to stay healthy, grow well, and produce better milk." },
+  { id: "start-thinking", title: "Start Thinking: Water for Livestock", cat: "Ganadería", img: "cow-842543_1280-696x464.jpg", url: "start-thinking.html", builtin: true,
+    excerpt: "Studies have consistently shown that livestock dry matter intake is related to water consumed." },
+  { id: "calidad-agua", title: "Evaluando la Calidad del Agua para el Ganado", cat: "Ganadería", img: "blog-cattle-2.jpg", url: "calidad-agua.html", builtin: true,
     excerpt: "El agua es el nutriente simple más importante para el ganado." },
   { id: "water-intake", title: "Water Intake Errors That Reduce Weight Gain", cat: "Ganadería", img: "blog-cattle-3.jpg", url: "water-intake.html", builtin: true,
-    excerpt: "Errores en el consumo de agua que reducen la ganancia de peso del ganado." },
+    excerpt: "Most cattle producers focus on feed rations, mineral supplementation, and forage quality when weight gain stalls." },
   { id: "water-more", title: "Why Is Water More Important Than Feed For Fattening Cattle?", cat: "Ganadería", img: "blog-cattle-4.jpg", url: "water-more.html", builtin: true,
-    excerpt: "Por qué el agua es más importante que el alimento a la hora de engordar ganado." }
+    excerpt: "Most farmers obsess over feed, but here’s the truth: water is more important than feed when it comes to fattening cattle." }
 ];
 
 window.AquaBlog = (function () {
