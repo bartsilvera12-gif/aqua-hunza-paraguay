@@ -188,6 +188,37 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
   .commercial-copy{padding:28px 20px}
 }
 
+/* Industrial: composición editorial técnica con imágenes rectas */
+.industrial-intro{overflow:hidden}
+.industrial-editorial{display:grid;grid-template-columns:minmax(360px,.82fr) minmax(0,1.18fr);gap:clamp(42px,6vw,96px);align-items:center}
+.industrial-photo,.industrial-wide-photo{position:relative;margin:0}
+.industrial-photo:before{content:"";position:absolute;z-index:-1;inset:38px auto -38px -50vw;width:calc(50vw + 38px);background:#E8F6FB}
+.industrial-photo img{display:block;width:100%;height:clamp(520px,49vw,680px);object-fit:cover;object-position:center;border-radius:0;box-shadow:none}
+.industrial-copy .mt-head{margin-bottom:clamp(22px,3vw,32px)}
+.industrial-copy .sec{max-width:15ch}
+.industrial-copy .prose{max-width:690px}
+.industrial-performance{background:linear-gradient(180deg,#EFF8FB 0%,#F8FCFD 100%)}
+.industrial-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3.5vw,54px);margin-bottom:clamp(48px,6vw,78px)}
+.industrial-benefits article{padding-top:20px;border-top:2px solid #BBDDE9}
+.industrial-benefits span{font-family:Manrope,sans-serif;font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--teal)}
+.industrial-benefits h4{margin:13px 0 9px;font-family:Manrope,sans-serif;font-size:clamp(20px,2vw,25px);color:var(--navy)}
+.industrial-benefits p{margin:0;max-width:34ch;font-size:15.5px;line-height:1.65;color:#496473}
+.industrial-wide-photo{margin-left:clamp(-24px,-2vw,-12px);margin-right:clamp(-24px,-2vw,-12px)}
+.industrial-wide-photo img{display:block;width:100%;height:clamp(420px,52vw,690px);object-fit:cover;object-position:center;border-radius:0;box-shadow:none}
+.industrial-food{display:grid;grid-template-columns:minmax(0,.9fr) minmax(340px,1.1fr);gap:clamp(42px,7vw,110px);align-items:start;margin-top:clamp(50px,6vw,82px);padding-top:clamp(38px,5vw,64px);border-top:1px solid #CFE4EC}
+.industrial-food .mt-head{margin:0}
+.industrial-food .sec{max-width:15ch}
+.industrial-food .prose{margin:0}
+@media (max-width:799px){
+  .industrial-editorial,.industrial-food{grid-template-columns:1fr;gap:28px}
+  .industrial-photo:before{display:none}
+  .industrial-photo img{height:auto;max-height:520px}
+  .industrial-benefits{grid-template-columns:1fr;margin-bottom:38px}
+  .industrial-wide-photo{margin-left:0;margin-right:0}
+  .industrial-wide-photo img{height:auto;max-height:520px}
+  .industrial-food{margin-top:42px;padding-top:34px}
+}
+
 /* entrance reveal (animación de entrada de textos) */
 .reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:0;transform:translateY(18px)}
 .reveal-on main .rv-in{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.3,1)}
