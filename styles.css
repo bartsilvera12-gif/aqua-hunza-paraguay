@@ -32,7 +32,7 @@ details.mobile .panel a.cta{margin-top:12px;background:var(--teal);color:#fff;te
 
 /* ---------- page hero (banda navy) ---------- */
 .page-hero{background:var(--navy);color:#fff;padding:clamp(120px,16vw,180px) 0 clamp(56px,8vw,96px)}
-.page-hero .eyebrow{color:var(--teal-l);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:20px}
+.page-hero .eyebrow{display:none}
 .page-hero h1{font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(30px,4.4vw,54px);line-height:1.08;letter-spacing:-.03em;max-width:20ch;text-wrap:balance}
 .page-hero .tagline{color:#C3D6DF;font-size:clamp(17px,1.7vw,21px);line-height:1.6;margin-top:22px;max-width:52ch;text-wrap:pretty}
 .page-hero .back{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;font-weight:600;font-size:14px;color:#AEC7D5;transition:color .2s ease,gap .2s ease}
