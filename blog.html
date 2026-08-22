@@ -1,35 +1,366 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><script>document.documentElement.classList.add('reveal-on');window.addEventListener('load',function(){setTimeout(function(){if(!window.__rvOK)document.documentElement.classList.remove('reveal-on')},1500)})</script><link rel="icon" type="image/png" href="./favicon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog y noticias | Aqua Hunza Paraguay</title>
-<meta name="description" content="Artículos sobre agua alcalina, hidrogenada, purificación y soluciones para el campo y la ganadería.">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css">
+  <meta charset="utf-8">
+
+  <script>
+    document.documentElement.classList.add("reveal-on");
+
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        if (!window.__rvOK) {
+          document.documentElement.classList.remove("reveal-on");
+        }
+      }, 1500);
+    });
+  </script>
+
+  <link rel="icon" type="image/png" href="./favicon.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Blog y noticias | Aqua Hunza Paraguay</title>
+
+  <meta
+    name="description"
+    content="Artículos sobre agua alcalina, hidrogenada, purificación y soluciones para el campo y la ganadería."
+  >
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./styles.css">
+
+  <style>
+    /* Introducción del blog */
+
+    .aqua-info,
+    .aqua-info * {
+      box-sizing: border-box;
+    }
+
+    .aqua-info {
+      width: min(calc(100% - 40px), 1500px);
+      margin: 0 auto;
+      padding: 55px 38px 30px;
+      background: #ffffff;
+    }
+
+    .aqua-info__line {
+      width: 68px;
+      height: 6px;
+      margin-bottom: 27px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #1797ad, #5bd0df);
+    }
+
+    .aqua-info__label {
+      display: block;
+      margin-bottom: 16px;
+      color: #249caf;
+      font-family: "Manrope", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .aqua-info h2 {
+      max-width: 850px;
+      margin: 0 0 28px;
+      color: #082735;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+    }
+
+    .aqua-info p {
+      max-width: 1200px;
+      margin: 0;
+      color: #29485a;
+      font-family: "DM Sans", sans-serif;
+      font-size: clamp(18px, 1.7vw, 26px);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .aqua-info {
+        width: 100%;
+        padding: 40px 24px 24px;
+      }
+
+      .aqua-info__line {
+        width: 55px;
+        height: 5px;
+        margin-bottom: 22px;
+      }
+
+      .aqua-info__label {
+        margin-bottom: 13px;
+        font-size: 12px;
+      }
+
+      .aqua-info h2 {
+        margin-bottom: 20px;
+        font-size: 40px;
+        line-height: 1.08;
+      }
+
+      .aqua-info p {
+        font-size: 18px;
+        line-height: 1.65;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .aqua-info h2 {
+        font-size: 34px;
+      }
+
+      .aqua-info p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header class="site"><div class="bar">
-  <a href="Aqua%20Hunza%20Paraguay.html#inicio" aria-label="Aqua Hunza Paraguay — inicio"><img class="logo" src="./logo-aqua-hunza.png" alt="Logo de Aqua Hunza Paraguay"></a>
-  <nav class="desktop" aria-label="Navegación principal"><a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a><a href="residencial.html">Residencial</a><a href="comercial.html">Comercial</a><a href="industrial.html">Industrial</a><a href="rural.html">Agro</a><a href="agua-hidrogenada.html">Agua hidrogenada</a><a href="agua-alcalina.html">Agua alcalina</a><a href="blog.html" aria-current="page">Blog</a><a href="contacto.html">Contacto</a><a class="cta" href="contacto.html">Solicitar asesoramiento</a></nav>
-  <details class="mobile"><summary aria-label="Abrir menú">☰</summary><div class="panel"><a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a><a href="residencial.html">Residencial</a><a href="comercial.html">Comercial</a><a href="industrial.html">Industrial</a><a href="rural.html">Agro</a><a href="agua-hidrogenada.html">Agua hidrogenada</a><a href="agua-alcalina.html">Agua alcalina</a><a href="blog.html" aria-current="page">Blog</a><a href="contacto.html">Contacto</a><a class="cta" href="contacto.html">Solicitar asesoramiento</a></div></details>
-</div></header>
-<main>
-<section class="page-hero has-img" style="background-image:url('./assets/img/himalaya-hunza.jpg')"><div class="wrap"><p class="eyebrow">Blog</p><h1>Blog y noticias sobre purificación de agua</h1><p class="tagline">Información, novedades y contenidos sobre agua funcional, purificación y bienestar.</p></div></section>
-<section class="block"><div class="wrap"><div class="posts" id="posts"></div></div></section>
-</main>
-<footer class="site">
-  <div class="cols">
-    <div><img src="./logo-aqua-hunza.png" alt="Logo de Aqua Hunza Paraguay" width="238" height="163"><p class="about">Sistemas avanzados de purificación de agua.</p></div>
-    <nav aria-label="Menú"><span class="colhead">Menú</span><a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a><a href="residencial.html">Residencial</a><a href="comercial.html">Comercial</a><a href="industrial.html">Industrial</a><a href="rural.html">Agro</a></nav>
-    <nav aria-label="Agua funcional"><span class="colhead">Agua funcional</span><a href="agua-hidrogenada.html">Agua hidrogenada</a><a href="agua-alcalina.html">Agua alcalina</a><a href="blog.html">Blog y noticias</a><a href="contacto.html">Contacto</a></nav>
-    <div class="fcol"><span class="colhead">Contacto</span><a href="https://wa.me/595982917000?text=Hola%2C%20quisiera%20recibir%20asesoramiento%20de%20Aqua%20Hunza." target="_blank" rel="noopener">WhatsApp +595 982 917 000</a><a href="mailto:contacto@aguasuper.com">contacto@aguasuper.com</a><span class="place">Asunción, Paraguay</span></div>
-  </div>
-  <div class="bottom"><span>© 2026 Aqua Hunza Paraguay. Todos los derechos reservados.</span><div style="display:flex;flex-wrap:wrap;gap:14px 24px"><a href="Aqua%20Hunza%20Paraguay.html#privacidad">Política de privacidad</a><a href="https://www.neura.com.py">Desarrollado por Neura</a></div></div>
-</footer>
-<script src="./blog-data.js"></script>
-<script>(function(){function u(v){if(!v)return "";if(v.indexOf("data:")===0||v.indexOf("http")===0||v.indexOf("/")!==-1)return v;return "./assets/img/"+v;}function e(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\"/g,"&quot;");}var ps=(window.AquaBlog?AquaBlog.getPosts():[]);var h=ps.map(function(p){return '<article class="post"><a class="thumb" href="'+e(p.url)+'"><img src="'+u(p.img)+'" alt="'+e(p.title)+'" loading="lazy"></a><p class="cat">'+e(p.cat||"")+'</p><h3><a href="'+e(p.url)+'">'+e(p.title)+'</a></h3><p>'+e(p.excerpt||"")+'</p><a class="more" href="'+e(p.url)+'">Leer más →</a></article>';}).join("");var el=document.getElementById("posts"); if(el) el.innerHTML=h;})();</script>
-<script src="./reveal.js"></script>
+  <header class="site">
+    <div class="bar">
+      <a
+        href="Aqua%20Hunza%20Paraguay.html#inicio"
+        aria-label="Aqua Hunza Paraguay — inicio"
+      >
+        <img
+          class="logo"
+          src="./logo-aqua-hunza.png"
+          alt="Logo de Aqua Hunza Paraguay"
+        >
+      </a>
+
+      <nav class="desktop" aria-label="Navegación principal">
+        <a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a>
+        <a href="residencial.html">Residencial</a>
+        <a href="comercial.html">Comercial</a>
+        <a href="industrial.html">Industrial</a>
+        <a href="rural.html">Agro</a>
+        <a href="agua-hidrogenada.html">Agua hidrogenada</a>
+        <a href="agua-alcalina.html">Agua alcalina</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="contacto.html">Contacto</a>
+
+        <a class="cta" href="contacto.html">
+          Solicitar asesoramiento
+        </a>
+      </nav>
+
+      <details class="mobile">
+        <summary aria-label="Abrir menú">☰</summary>
+
+        <div class="panel">
+          <a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a>
+          <a href="residencial.html">Residencial</a>
+          <a href="comercial.html">Comercial</a>
+          <a href="industrial.html">Industrial</a>
+          <a href="rural.html">Agro</a>
+          <a href="agua-hidrogenada.html">Agua hidrogenada</a>
+          <a href="agua-alcalina.html">Agua alcalina</a>
+          <a href="blog.html" aria-current="page">Blog</a>
+          <a href="contacto.html">Contacto</a>
+
+          <a class="cta" href="contacto.html">
+            Solicitar asesoramiento
+          </a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portada del blog -->
+    <section
+      class="page-hero has-img"
+      style="background-image:url('./assets/img/himalaya-hunza.jpg')"
+    >
+      <div class="wrap">
+        <p class="eyebrow">Blog</p>
+
+        <h1>Blog y noticias sobre purificación de agua</h1>
+
+        <p class="tagline">
+          Información, novedades y contenidos sobre agua funcional,
+          purificación y bienestar.
+        </p>
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="aqua-info">
+      <div class="aqua-info__line"></div>
+
+      <span class="aqua-info__label">
+        Informaciones
+      </span>
+
+      <h2>
+        Conocé más sobre<br>
+        Aqua Hunza
+      </h2>
+
+      <p>
+        Artículos destacados sobre agua alcalina, agua hidrogenada,
+        purificación y soluciones para hogares, empresas y el sector rural.
+      </p>
+    </section>
+
+    <!-- Artículos del blog -->
+    <section class="block">
+      <div class="wrap">
+        <div class="posts" id="posts"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="cols">
+      <div>
+        <img
+          src="./logo-aqua-hunza.png"
+          alt="Logo de Aqua Hunza Paraguay"
+          width="238"
+          height="163"
+        >
+
+        <p class="about">
+          Sistemas avanzados de purificación de agua.
+        </p>
+      </div>
+
+      <nav aria-label="Menú">
+        <span class="colhead">Menú</span>
+
+        <a href="Aqua%20Hunza%20Paraguay.html#inicio">Inicio</a>
+        <a href="residencial.html">Residencial</a>
+        <a href="comercial.html">Comercial</a>
+        <a href="industrial.html">Industrial</a>
+        <a href="rural.html">Agro</a>
+      </nav>
+
+      <nav aria-label="Agua funcional">
+        <span class="colhead">Agua funcional</span>
+
+        <a href="agua-hidrogenada.html">Agua hidrogenada</a>
+        <a href="agua-alcalina.html">Agua alcalina</a>
+        <a href="blog.html">Blog y noticias</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <div class="fcol">
+        <span class="colhead">Contacto</span>
+
+        <a
+          href="https://wa.me/595982917000?text=Hola%2C%20quisiera%20recibir%20asesoramiento%20de%20Aqua%20Hunza."
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp +595 982 917 000
+        </a>
+
+        <a href="mailto:contacto@aguasuper.com">
+          contacto@aguasuper.com
+        </a>
+
+        <span class="place">
+          Asunción, Paraguay
+        </span>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <span>
+        © 2026 Aqua Hunza Paraguay. Todos los derechos reservados.
+      </span>
+
+      <div style="display:flex; flex-wrap:wrap; gap:14px 24px;">
+        <a href="Aqua%20Hunza%20Paraguay.html#privacidad">
+          Política de privacidad
+        </a>
+
+        <a href="https://www.neura.com.py">
+          Desarrollado por Neura
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./blog-data.js"></script>
+
+  <script>
+    (function () {
+      function imageURL(value) {
+        if (!value) return "";
+
+        if (
+          value.indexOf("data:") === 0 ||
+          value.indexOf("http") === 0 ||
+          value.indexOf("/") !== -1
+        ) {
+          return value;
+        }
+
+        return "./assets/img/" + value;
+      }
+
+      function escapeHTML(value) {
+        return (value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      var posts = window.AquaBlog
+        ? AquaBlog.getPosts()
+        : [];
+
+      var content = posts
+        .map(function (post) {
+          return (
+            '<article class="post">' +
+              '<a class="thumb" href="' + escapeHTML(post.url) + '">' +
+                '<img src="' + imageURL(post.img) + '" ' +
+                'alt="' + escapeHTML(post.title) + '" loading="lazy">' +
+              '</a>' +
+              '<p class="cat">' + escapeHTML(post.cat || "") + '</p>' +
+              '<h3>' +
+                '<a href="' + escapeHTML(post.url) + '">' +
+                  escapeHTML(post.title) +
+                '</a>' +
+              '</h3>' +
+              '<p>' + escapeHTML(post.excerpt || "") + '</p>' +
+              '<a class="more" href="' + escapeHTML(post.url) + '">' +
+                'Leer más →' +
+              '</a>' +
+            '</article>'
+          );
+        })
+        .join("");
+
+      var postsContainer = document.getElementById("posts");
+
+      if (postsContainer) {
+        postsContainer.innerHTML = content;
+      }
+    })();
+  </script>
+
+  <script src="./reveal.js"></script>
 </body>
 </html>
