@@ -131,6 +131,29 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
   .comparison-table th,.comparison-table td{padding:13px 14px}
 }
 
+/* Comercial: composición editorial con imágenes rectas */
+.commercial-lead .mt-head{margin-bottom:clamp(30px,4vw,52px)}
+.commercial-editorial{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:0;align-items:stretch;border-top:1px solid #BFDDE8;border-bottom:1px solid #BFDDE8}
+.commercial-editorial>img{display:block;width:100%;height:100%;min-height:560px;object-fit:cover;border-radius:0;box-shadow:none}
+.commercial-sectors{display:grid;align-content:center;background:#fff}
+.commercial-sectors article{position:relative;padding:clamp(26px,3vw,42px) clamp(28px,4vw,56px);border-bottom:1px solid #DCEAF0}
+.commercial-sectors article:last-child{border-bottom:0}
+.commercial-sectors article>span{display:block;margin-bottom:10px;color:var(--teal);font:700 12px Manrope,sans-serif;letter-spacing:.14em}
+.commercial-sectors h4{font:700 clamp(18px,2vw,23px) Manrope,sans-serif;color:var(--navy)}
+.commercial-sectors p{margin-top:10px;color:#49616F;font-size:16px;line-height:1.65}
+.commercial-editorial.reverse{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);margin-top:clamp(32px,4vw,52px);background:#fff}
+.commercial-editorial.reverse>img{min-height:600px;object-position:center}
+.commercial-copy{align-self:center;padding:clamp(34px,5vw,72px)}
+.commercial-copy .prose{margin-top:0}
+.commercial-copy .ticks{margin-top:30px}
+@media (max-width:799px){
+  .commercial-editorial,.commercial-editorial.reverse{grid-template-columns:1fr}
+  .commercial-editorial>img,.commercial-editorial.reverse>img{min-height:0;height:auto;max-height:620px;object-fit:contain;background:#fff}
+  .commercial-editorial.reverse .commercial-copy{order:2}
+  .commercial-editorial.reverse>img{order:1}
+  .commercial-copy{padding:28px 20px}
+}
+
 /* entrance reveal (animación de entrada de textos) */
 .reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:0;transform:translateY(18px)}
 .reveal-on main .rv-in{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.3,1)}
