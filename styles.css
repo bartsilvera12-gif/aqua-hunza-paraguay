@@ -286,6 +286,60 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
 .hydrogen-medical-note{margin-top:clamp(44px,6vw,72px);padding:clamp(24px,3vw,36px);border-left:4px solid #D7A900;background:#FFF9E7}
 .hydrogen-medical-note strong{font:800 12px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#826900}
 .hydrogen-medical-note p{margin:10px 0 0;max-width:100ch;color:#5F5A44;font-size:15px;line-height:1.7}
+
+/* Agua alcalina: lectura editorial y estudios completos */
+.alkaline-hero h1{max-width:16ch}
+.alkaline-intro__grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(420px,1.2fr);gap:clamp(48px,8vw,130px);align-items:start}
+.alkaline-intro__grid .mt-head,.alkaline-intro__copy .prose{margin:0}
+.alkaline-intro__copy .prose h3{margin:clamp(32px,4vw,48px) 0 14px;font:700 clamp(22px,2.4vw,31px)/1.25 Manrope,sans-serif;color:var(--navy)}
+.alkaline-ph{display:grid;grid-template-columns:auto minmax(70px,1fr) auto;gap:22px;align-items:center;margin-top:clamp(38px,5vw,58px);padding-top:24px;border-top:1px solid #C9E2EB}
+.alkaline-ph span{display:flex;align-items:baseline;gap:10px;color:var(--navy)}
+.alkaline-ph small{font:700 11px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#64808F}
+.alkaline-ph strong{font:800 clamp(28px,3.4vw,44px) Manrope,sans-serif;color:var(--teal)}
+.alkaline-ph i{position:relative;height:3px;background:linear-gradient(90deg,#B8DCE8,var(--teal))}
+.alkaline-ph i:before,.alkaline-ph i:after{content:"";position:absolute;top:50%;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--teal);transform:translateY(-50%)}
+.alkaline-ph i:before{left:0}.alkaline-ph i:after{right:0}
+.alkaline-section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.62fr);gap:clamp(40px,7vw,100px);align-items:end}
+.alkaline-section-head .mt-head,.alkaline-section-head .prose{margin:0}
+.alkaline-benefits__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:clamp(46px,6vw,74px);border-top:1px solid #BBDCE7}
+.alkaline-benefits__grid article{grid-column:span 2;position:relative;min-height:240px;padding:clamp(25px,3vw,38px);border-right:1px solid #D2E6ED;border-bottom:1px solid #D2E6ED;background:rgba(255,255,255,.48);transition:background .25s ease,transform .25s ease}
+.alkaline-benefits__grid article:nth-child(3){border-right:0}
+.alkaline-benefits__grid article:nth-child(4){grid-column:2 / span 2}
+.alkaline-benefits__grid article:nth-child(5){grid-column:4 / span 2;border-right:0}
+.alkaline-benefits__grid article:hover{z-index:1;background:#fff;transform:translateY(-5px)}
+.alkaline-benefits__grid article>span{font:800 12px Manrope,sans-serif;letter-spacing:.14em;color:var(--teal)}
+.alkaline-benefits__grid h3{margin:24px 0 12px;font:700 clamp(19px,1.7vw,23px)/1.28 Manrope,sans-serif;color:var(--navy)}
+.alkaline-benefits__grid p{margin:0;color:#4B6675;font-size:15px;line-height:1.68}
+.alkaline-research{background:linear-gradient(180deg,#fff 0%,#F1F9FB 100%)}
+.alkaline-research>.wrap{max-width:1320px}
+.alkaline-research__head{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.55fr);gap:clamp(40px,7vw,100px);align-items:end;padding-bottom:clamp(42px,5vw,62px)}
+.alkaline-research__head .mt-head{margin:0}
+.alkaline-research__head>div:last-child>p{margin:0;color:#587280;font-size:16px;line-height:1.65}
+.alkaline-research__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.alkaline-research__actions button{padding:11px 17px;border:1px solid #A9D3E1;background:transparent;color:#1D738D;font:700 13px Manrope,sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
+.alkaline-research__actions button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.alkaline-studies{border-bottom:1px solid #C6DFE8}
+.alkaline-study{border-top:1px solid #C6DFE8;background:rgba(255,255,255,.45)}
+.alkaline-study[open]{background:#fff;box-shadow:0 26px 60px -55px rgba(16,42,56,.75)}
+.alkaline-study summary{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:20px;align-items:center;padding:clamp(25px,3vw,38px) clamp(18px,3vw,36px);list-style:none;cursor:pointer}
+.alkaline-study summary::-webkit-details-marker{display:none}
+.alkaline-study summary>span{display:block;margin-bottom:8px;font:800 10.5px/1.4 Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)}
+.alkaline-study summary h3{grid-column:1;margin:0;max-width:42ch;font:700 clamp(21px,2.5vw,32px)/1.25 Manrope,sans-serif;color:var(--navy)}
+.alkaline-study summary i{grid-column:2;grid-row:1 / span 2;position:relative;width:42px;height:42px;border:1px solid #AFD7E4;border-radius:50%}
+.alkaline-study summary i:before,.alkaline-study summary i:after{content:"";position:absolute;top:50%;left:50%;width:14px;height:2px;background:var(--teal);transform:translate(-50%,-50%)}
+.alkaline-study summary i:after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s ease}
+.alkaline-study[open] summary i:after{transform:translate(-50%,-50%) rotate(0deg)}
+.alkaline-study__body{max-width:1040px;padding:0 clamp(28px,6vw,78px) clamp(42px,5vw,68px)}
+.alkaline-study__body p{margin:0 0 19px;color:#3F5B6A;font-size:clamp(16px,1.45vw,18px);line-height:1.78;text-wrap:pretty}
+.alkaline-study__body h4{margin:32px 0 12px;font:800 13px Manrope,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--navy)}
+.alkaline-meta{padding:11px 15px;border-left:3px solid #9FD6E6;background:#F1FAFC;color:#3C5868!important;font-size:14px!important}
+.alkaline-lead{font:700 clamp(18px,2vw,23px)/1.45 Manrope,sans-serif;color:var(--navy)!important}
+.alkaline-keywords{font-size:14px!important;color:#657E8C!important}
+.alkaline-source{display:flex;justify-content:space-between;gap:18px;margin-top:30px;padding:18px 0;border-top:1px solid #D3E7ED;border-bottom:1px solid #D3E7ED;color:#147F9C;font-weight:700;text-decoration:none}
+.alkaline-source:hover{color:var(--navy)}
+.alkaline-note{margin-top:clamp(44px,6vw,72px);padding:clamp(24px,3vw,36px);border-left:4px solid #D7A900;background:#FFF9E7}
+.alkaline-note strong{font:800 12px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#826900}
+.alkaline-note p{margin:10px 0 0;max-width:96ch;color:#5F5A44;font-size:15px;line-height:1.7}
 @media (max-width:980px){
   .hydrogen-summary-grid,.hydrogen-index{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hydrogen-summary-grid article,.hydrogen-index a{border-bottom:1px solid #D5E7EE}
@@ -302,6 +356,15 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
   .hydrogen-study summary i{width:34px;height:34px}
   .hydrogen-study__body{padding:0 18px 36px}
   .hydrogen-study__body p{font-size:16px;line-height:1.72}
+  .alkaline-intro__grid,.alkaline-section-head,.alkaline-research__head{grid-template-columns:1fr;gap:26px}
+  .alkaline-benefits__grid{grid-template-columns:1fr}
+  .alkaline-benefits__grid article,.alkaline-benefits__grid article:nth-child(4),.alkaline-benefits__grid article:nth-child(5){grid-column:auto;min-height:0;border-right:0}
+  .alkaline-study summary{grid-template-columns:minmax(0,1fr) 36px;padding:22px 16px}
+  .alkaline-study summary i{width:34px;height:34px}
+  .alkaline-study__body{padding:0 18px 38px}
+  .alkaline-study__body p{font-size:16px;line-height:1.72}
+  .alkaline-ph{grid-template-columns:auto 1fr auto;gap:12px}
+  .alkaline-ph span{display:grid;gap:2px}
 }
 
 /* entrance reveal (animación de entrada de textos) */
