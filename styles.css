@@ -90,6 +90,9 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
 .rural-intro .split-media,.rural-impact .split-media{align-items:start;margin-top:clamp(24px,3vw,40px)}
 .rural-intro .split-media .prose,.rural-impact .split-media .prose{margin-top:0}
 .rural-intro .split-media img{width:100%;height:clamp(320px,38vw,470px);max-height:none;object-fit:cover;object-position:center;border-radius:24px}
+@media (min-width:800px){
+  .rural-intro .split-media img{transform:translateY(-72px);margin-bottom:-72px}
+}
 .rural-impact .split-media{padding:clamp(20px,3vw,34px);background:rgba(255,255,255,.72);border:1px solid rgba(39,156,188,.15);border-radius:24px;box-shadow:0 22px 50px -38px rgba(16,42,56,.45)}
 .rural-impact .split-media img{width:100%;height:clamp(310px,34vw,430px);max-height:none;object-fit:cover;object-position:center;border-radius:18px}
 .rural-impact .split-media .prose{align-self:center}
