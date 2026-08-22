@@ -254,10 +254,11 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
 .hydrogen-report__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .hydrogen-report__actions button{padding:11px 17px;border:1px solid #A9D3E1;background:transparent;color:#1D738D;font:700 13px Manrope,sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
 .hydrogen-report__actions button:hover{background:var(--navy);border-color:var(--navy);color:#fff}
-.hydrogen-category{scroll-margin-top:110px;padding-top:clamp(66px,8vw,108px)}
-.hydrogen-category__head{display:grid;grid-template-columns:minmax(190px,.34fr) minmax(0,1fr);gap:clamp(26px,5vw,72px);align-items:start;margin-bottom:clamp(30px,4vw,48px)}
-.hydrogen-category__head span{padding-top:10px;font:800 11.5px/1.5 Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)}
-.hydrogen-category__head h2{max-width:22ch;margin:0;font:800 clamp(30px,4vw,52px)/1.08 Manrope,sans-serif;letter-spacing:-.035em;color:var(--navy)}
+.hydrogen-category{scroll-margin-top:110px;padding-top:clamp(48px,6vw,76px)}
+.hydrogen-category__head{position:relative;display:block;margin-bottom:clamp(24px,3vw,34px);padding:22px 0 26px;border-top:1px solid #B8D9E4;border-bottom:1px solid #C9E0E8}
+.hydrogen-category__head:before{content:"";position:absolute;top:-2px;left:0;width:76px;height:4px;background:var(--teal)}
+.hydrogen-category__head span{display:none}
+.hydrogen-category__head h2{max-width:30ch;margin:0;font:800 clamp(29px,3.2vw,44px)/1.1 Manrope,sans-serif;letter-spacing:-.03em;color:var(--navy);text-wrap:balance}
 .hydrogen-studies{border-bottom:1px solid #C9E0E8}
 .hydrogen-study{border-top:1px solid #C9E0E8;background:rgba(255,255,255,.45)}
 .hydrogen-study[open]{background:#fff;box-shadow:0 24px 55px -52px rgba(16,42,56,.75)}
