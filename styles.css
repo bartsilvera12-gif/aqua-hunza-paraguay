@@ -85,6 +85,49 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
 @media (min-width:800px){.split-media{grid-template-columns:1.1fr .9fr}}
 .split-media img{max-width:100%;max-height:480px;width:auto;height:auto;display:block;justify-self:center;border-radius:20px;box-shadow:0 26px 60px -42px rgba(16,42,56,.5)}
 
+/* Rural: composición compacta y comparativas interactivas */
+.rural-intro .mt-head{margin-bottom:clamp(24px,3vw,38px)}
+.rural-intro .split-media,.rural-impact .split-media{align-items:start;margin-top:clamp(24px,3vw,40px)}
+.rural-intro .split-media .prose,.rural-impact .split-media .prose{margin-top:0}
+.rural-intro .split-media img{width:100%;height:clamp(320px,38vw,470px);max-height:none;object-fit:cover;object-position:center;border-radius:24px}
+.rural-impact .split-media{padding:clamp(20px,3vw,34px);background:rgba(255,255,255,.72);border:1px solid rgba(39,156,188,.15);border-radius:24px;box-shadow:0 22px 50px -38px rgba(16,42,56,.45)}
+.rural-impact .split-media img{width:100%;height:clamp(310px,34vw,430px);max-height:none;object-fit:cover;object-position:center;border-radius:18px}
+.rural-impact .split-media .prose{align-self:center}
+
+.comparison-shell{margin-top:clamp(30px,4vw,48px);padding:clamp(16px,2.2vw,24px);border:1px solid rgba(79,208,232,.22);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:0 28px 70px -48px rgba(0,0,0,.75)}
+.comparison-shell.light{border-color:#D9EAF1;background:linear-gradient(145deg,#fff,#F5FBFD);box-shadow:0 28px 65px -48px rgba(16,42,56,.5)}
+.comparison-legend{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px;padding:2px 4px 16px;font:600 13px Manrope,sans-serif;color:#D8E8EF}
+.comparison-shell.light .comparison-legend{color:#395463}
+.comparison-legend span{display:inline-flex;align-items:center;gap:8px}
+.comparison-legend small{margin-left:auto;color:#8EAFBC;font-size:11.5px;font-weight:500}
+.comparison-legend .dot{width:9px;height:9px;border-radius:50%;display:inline-block;box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+.comparison-legend .dot.natural{background:#8EA9B5}
+.comparison-legend .dot.purified{background:#4FD0E8}
+.comparison-shell .table-scroll{margin-top:0;border:0;border-radius:15px;background:rgba(5,28,40,.25)}
+.comparison-shell.light .table-scroll{background:#fff;box-shadow:inset 0 0 0 1px #E1EDF2}
+.comparison-table{border-collapse:separate!important;border-spacing:0}
+.comparison-table th{cursor:pointer;outline:none;transition:background .25s ease,color .25s ease,box-shadow .25s ease}
+.comparison-table th:focus-visible{box-shadow:inset 0 0 0 2px #4FD0E8}
+.comparison-table th:first-child{border-radius:14px 0 0 0}
+.comparison-table th:last-child{border-radius:0 14px 0 0}
+.comparison-table td{transition:background .22s ease,color .22s ease,transform .22s ease}
+.comparison-table tbody tr:hover td{background:rgba(79,208,232,.1)}
+.comparison-shell.light .comparison-table tbody tr:hover td{background:#EEF9FC}
+.comparison-table tbody tr:hover td:first-child{transform:translateX(4px)}
+.comparison-table .is-selected{background:rgba(79,208,232,.14)!important}
+.comparison-table th.is-selected{color:#fff!important;background:linear-gradient(135deg,#1689A8,#35BFD9)!important}
+.comparison-shell.light .comparison-table td.is-selected{color:#123A4B;background:#E5F7FB!important;font-weight:650}
+.comparison-table tbody td:last-child{color:#64E1B1;font-weight:700}
+.comparison-shell.light .comparison-table tbody td:last-child{color:#14734D}
+
+@media (max-width:799px){
+  .rural-intro .split-media,.rural-impact .split-media{gap:20px}
+  .rural-intro .split-media img,.rural-impact .split-media img{height:auto;max-height:440px;object-fit:contain}
+  .comparison-legend small{width:100%;margin-left:0}
+  .comparison-shell{padding:12px;border-radius:18px}
+  .comparison-table th,.comparison-table td{padding:13px 14px}
+}
+
 /* entrance reveal (animación de entrada de textos) */
 .reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:0;transform:translateY(18px)}
 .reveal-on main .rv-in{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.3,1)}
