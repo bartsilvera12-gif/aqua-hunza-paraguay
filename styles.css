@@ -21,6 +21,12 @@ nav.desktop a{font-size:13.5px;color:var(--navy);white-space:nowrap;transition:c
 nav.desktop a:hover,nav.desktop a[aria-current]{color:var(--teal)}
 nav.desktop a.cta{background:var(--teal);color:#fff;font-weight:600;padding:12px 20px;border-radius:999px;transition:background .25s ease,transform .25s ease}
 nav.desktop a.cta:hover{background:var(--navy);color:#fff;transform:translateY(-1px)}
+/* CTA destacado "Análisis gratis" (llamativo) */
+nav.desktop a.cta-hl{background:linear-gradient(135deg,#16C784,#0FA968);color:#fff;box-shadow:0 10px 22px -8px rgba(15,169,104,.7);animation:ctaPulse 2.4s ease-in-out infinite}
+nav.desktop a.cta-hl:hover{background:linear-gradient(135deg,#0FA968,#16C784);color:#fff;transform:translateY(-1px);animation:none}
+@keyframes ctaPulse{0%,100%{box-shadow:0 10px 22px -8px rgba(15,169,104,.55)}50%{box-shadow:0 12px 26px -6px rgba(22,199,132,.9)}}
+@media (prefers-reduced-motion:reduce){nav.desktop a.cta-hl{animation:none}}
+details.mobile .panel a.cta-hl{background:linear-gradient(135deg,#16C784,#0FA968);box-shadow:0 10px 22px -8px rgba(15,169,104,.7)}
 details.mobile{display:none;margin-left:auto}
 details.mobile>summary{list-style:none;cursor:pointer;width:46px;height:46px;border:1px solid #D8E7ED;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:18px}
 details.mobile>summary::-webkit-details-marker{display:none}
