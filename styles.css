@@ -221,6 +221,89 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
   .industrial-food{margin-top:42px;padding-top:34px}
 }
 
+/* Agua hidrogenada: resumen e informe científico extenso */
+.hydrogen-hero h1{max-width:18ch}
+.hydrogen-overview__intro{display:grid;grid-template-columns:minmax(0,.9fr) minmax(360px,1.1fr);gap:clamp(42px,7vw,110px);align-items:start}
+.hydrogen-overview__intro .mt-head,.hydrogen-overview__intro .prose{margin:0}
+.hydrogen-summary-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:clamp(48px,6vw,76px);border-top:1px solid #C9E2EB;border-bottom:1px solid #C9E2EB}
+.hydrogen-summary-grid article{padding:clamp(22px,2.5vw,34px);border-right:1px solid #D9EAF0}
+.hydrogen-summary-grid article:last-child{border-right:0}
+.hydrogen-summary-grid span{font:800 12px Manrope,sans-serif;letter-spacing:.15em;color:var(--teal)}
+.hydrogen-summary-grid h3{margin:15px 0 10px;font:700 clamp(18px,1.7vw,22px)/1.25 Manrope,sans-serif;color:var(--navy)}
+.hydrogen-summary-grid p{margin:0;font-size:14.5px;line-height:1.65;color:#536E7D}
+.hydrogen-disclaimer{padding:22px 0;background:var(--navy);color:#fff}
+.hydrogen-disclaimer .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,38px);align-items:center}
+.hydrogen-disclaimer strong{font:800 12px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#70D7E9}
+.hydrogen-disclaimer p{margin:0;max-width:92ch;color:#D4E5EC;font-size:15px;line-height:1.6}
+.hydrogen-navigation{padding-bottom:clamp(54px,7vw,88px)}
+.hydrogen-index{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:clamp(34px,4vw,50px);border-top:1px solid #BFDDE8;border-bottom:1px solid #BFDDE8}
+.hydrogen-index a{display:flex;flex-direction:column;gap:16px;min-height:150px;padding:24px 22px;border-right:1px solid #D5E7EE;color:var(--navy);font:700 16px/1.4 Manrope,sans-serif;text-decoration:none;transition:background .25s ease,color .25s ease,transform .25s ease}
+.hydrogen-index a:last-child{border-right:0}
+.hydrogen-index a:hover{background:var(--navy);color:#fff;transform:translateY(-4px)}
+.hydrogen-index span{font-size:12px;letter-spacing:.14em;color:var(--teal)}
+.hydrogen-video{padding-top:0}
+.hydrogen-video .mt-head{text-align:center;margin-left:auto;margin-right:auto}
+.hydrogen-video .sec{margin-left:auto;margin-right:auto}
+.hydrogen-video__frame{position:relative;width:min(100%,980px);aspect-ratio:16/9;margin:clamp(28px,4vw,44px) auto 0;overflow:hidden;background:#071821;box-shadow:0 30px 70px -45px rgba(16,42,56,.7)}
+.hydrogen-video__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.hydrogen-report{background:linear-gradient(180deg,#EFF8FB 0%,#F8FCFD 100%)}
+.hydrogen-report>.wrap{max-width:1320px}
+.hydrogen-report__intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.65fr);gap:clamp(38px,6vw,88px);align-items:end;padding-bottom:clamp(46px,6vw,72px);border-bottom:1px solid #C4DFE8}
+.hydrogen-report__intro .mt-head{margin:0}
+.hydrogen-report__intro>div:last-child>p{margin:0;color:#496574;line-height:1.7}
+.hydrogen-report__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hydrogen-report__actions button{padding:11px 17px;border:1px solid #A9D3E1;background:transparent;color:#1D738D;font:700 13px Manrope,sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
+.hydrogen-report__actions button:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+.hydrogen-category{scroll-margin-top:110px;padding-top:clamp(66px,8vw,108px)}
+.hydrogen-category__head{display:grid;grid-template-columns:minmax(190px,.34fr) minmax(0,1fr);gap:clamp(26px,5vw,72px);align-items:start;margin-bottom:clamp(30px,4vw,48px)}
+.hydrogen-category__head span{padding-top:10px;font:800 11.5px/1.5 Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)}
+.hydrogen-category__head h2{max-width:22ch;margin:0;font:800 clamp(30px,4vw,52px)/1.08 Manrope,sans-serif;letter-spacing:-.035em;color:var(--navy)}
+.hydrogen-studies{border-bottom:1px solid #C9E0E8}
+.hydrogen-study{border-top:1px solid #C9E0E8;background:rgba(255,255,255,.45)}
+.hydrogen-study[open]{background:#fff;box-shadow:0 24px 55px -52px rgba(16,42,56,.75)}
+.hydrogen-study summary{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:22px;align-items:center;padding:clamp(24px,3vw,36px) clamp(20px,3vw,34px);list-style:none;cursor:pointer}
+.hydrogen-study summary::-webkit-details-marker{display:none}
+.hydrogen-study__topic{display:block;margin-bottom:8px;font:800 10.5px/1.45 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.hydrogen-study summary h3{grid-column:1;margin:0;max-width:44ch;font:700 clamp(20px,2.2vw,29px)/1.28 Manrope,sans-serif;color:var(--navy)}
+.hydrogen-study summary i{grid-column:2;grid-row:1 / span 2;position:relative;width:40px;height:40px;border:1px solid #B8DCE8;border-radius:50%}
+.hydrogen-study summary i:before,.hydrogen-study summary i:after{content:"";position:absolute;top:50%;left:50%;width:14px;height:2px;background:var(--teal);transform:translate(-50%,-50%)}
+.hydrogen-study summary i:after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s ease}
+.hydrogen-study[open] summary i:after{transform:translate(-50%,-50%) rotate(0deg)}
+.hydrogen-study__body{max-width:1040px;padding:0 clamp(28px,6vw,78px) clamp(38px,5vw,62px)}
+.hydrogen-study__body p{margin:0 0 19px;color:#3F5B6A;font-size:clamp(16px,1.5vw,18px);line-height:1.78;text-wrap:pretty}
+.hydrogen-study__body h4{margin:30px 0 12px;font:800 13px Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+.hydrogen-study__body a{color:#168EAD;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.hydrogen-meta{padding:12px 16px;border-left:3px solid #9FD6E6;background:#F1FAFC;color:#395565!important;font-size:14px!important}
+.hydrogen-source{margin-top:26px!important;padding-top:18px;border-top:1px solid #D5E8EE;color:#147C99!important;font-size:14px!important;font-weight:700}
+.hydrogen-source-note{color:#718A97!important;font-size:13px!important}
+.hydrogen-sources__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.72fr);gap:clamp(42px,7vw,110px);align-items:start}
+.hydrogen-sources__grid .prose{margin-top:0}
+.hydrogen-sources__grid h3{font:700 clamp(21px,2.2vw,28px)/1.3 Manrope,sans-serif;color:var(--navy)}
+.hydrogen-keywords{font-size:15px!important;color:#5A7381!important}
+.hydrogen-source-links{display:grid;border-top:1px solid #BFDDE8}
+.hydrogen-source-links a{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid #BFDDE8;color:var(--navy);font-weight:700;text-decoration:none}
+.hydrogen-source-links i{font-size:13px;font-style:normal;color:var(--teal)}
+.hydrogen-medical-note{margin-top:clamp(44px,6vw,72px);padding:clamp(24px,3vw,36px);border-left:4px solid #D7A900;background:#FFF9E7}
+.hydrogen-medical-note strong{font:800 12px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#826900}
+.hydrogen-medical-note p{margin:10px 0 0;max-width:100ch;color:#5F5A44;font-size:15px;line-height:1.7}
+@media (max-width:980px){
+  .hydrogen-summary-grid,.hydrogen-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hydrogen-summary-grid article,.hydrogen-index a{border-bottom:1px solid #D5E7EE}
+}
+@media (max-width:799px){
+  .hydrogen-overview__intro,.hydrogen-report__intro,.hydrogen-category__head,.hydrogen-sources__grid{grid-template-columns:1fr;gap:24px}
+  .hydrogen-summary-grid,.hydrogen-index{grid-template-columns:1fr}
+  .hydrogen-summary-grid article,.hydrogen-index a{border-right:0}
+  .hydrogen-index a{min-height:0}
+  .hydrogen-disclaimer .wrap{grid-template-columns:1fr;gap:8px}
+  .hydrogen-category{padding-top:62px}
+  .hydrogen-category__head h2{font-size:clamp(29px,9vw,42px)}
+  .hydrogen-study summary{grid-template-columns:minmax(0,1fr) 36px;padding:22px 16px}
+  .hydrogen-study summary i{width:34px;height:34px}
+  .hydrogen-study__body{padding:0 18px 36px}
+  .hydrogen-study__body p{font-size:16px;line-height:1.72}
+}
+
 /* entrance reveal (animación de entrada de textos) */
 .reveal-on main :where(h1,h2,h3,h4,h5,p,li,blockquote,figcaption,.eyebrow,.tagline,.btn,.sub,.lead,.quote,.colhead,.num){opacity:0;transform:translateY(18px)}
 .reveal-on main .rv-in{opacity:1;transform:none;transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.3,1)}
