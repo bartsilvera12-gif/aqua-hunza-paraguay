@@ -248,19 +248,16 @@ h3.sub{margin-bottom:clamp(4px,1vw,10px)}
 .hydrogen-video__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .hydrogen-report{background:linear-gradient(180deg,#EFF8FB 0%,#F8FCFD 100%)}
 .hydrogen-report>.wrap{max-width:1320px}
-.hydrogen-report__intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.65fr);gap:clamp(38px,6vw,88px);align-items:end;padding-bottom:clamp(46px,6vw,72px);border-bottom:1px solid #C4DFE8}
-.hydrogen-report__intro .mt-head{margin:0}
-.hydrogen-report__intro>div:last-child>p{margin:0;color:#496574;line-height:1.7}
-.hydrogen-report__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.hydrogen-report__actions button{padding:11px 17px;border:1px solid #A9D3E1;background:transparent;color:#1D738D;font:700 13px Manrope,sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
-.hydrogen-report__actions button:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+.hydrogen-report__intro{padding-bottom:clamp(46px,6vw,72px);border-bottom:1px solid #C4DFE8}
+.hydrogen-report__intro .mt-head{max-width:900px;margin:0}
 .hydrogen-category{scroll-margin-top:110px;padding-top:clamp(48px,6vw,76px)}
 .hydrogen-category__head{position:relative;display:block;margin-bottom:clamp(24px,3vw,34px);padding:22px 0 26px;border-top:1px solid #B8D9E4;border-bottom:1px solid #C9E0E8}
 .hydrogen-category__head:before{content:"";position:absolute;top:-2px;left:0;width:76px;height:4px;background:var(--teal)}
 .hydrogen-category__head span{display:none}
 .hydrogen-category__head h2{max-width:30ch;margin:0;font:800 clamp(29px,3.2vw,44px)/1.1 Manrope,sans-serif;letter-spacing:-.03em;color:var(--navy);text-wrap:balance}
 .hydrogen-studies{border-bottom:1px solid #C9E0E8}
-.hydrogen-study{border-top:1px solid #C9E0E8;background:rgba(255,255,255,.45)}
+.hydrogen-study{border-top:1px solid #C9E0E8;background:#fff;transition:background-color .2s ease}
+.hydrogen-study:hover{background:#F5FBFD}
 .hydrogen-study[open]{background:#fff;box-shadow:0 24px 55px -52px rgba(16,42,56,.75)}
 .hydrogen-study summary{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:22px;align-items:center;padding:clamp(24px,3vw,36px) clamp(20px,3vw,34px);list-style:none;cursor:pointer}
 .hydrogen-study summary::-webkit-details-marker{display:none}
