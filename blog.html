@@ -152,7 +152,7 @@ main .aqua-info + .block {
         href="Aqua%20Hunza%20Paraguay.html#inicio"
         aria-label="Aqua Hunza Paraguay — inicio"
       >
-        <img
+        <img decoding="async"
           class="logo"
           src="./logo-aqua-hunza.png"
           alt="Logo de Aqua Hunza Paraguay"
@@ -201,7 +201,7 @@ main .aqua-info + .block {
     <!-- Portada del blog -->
     <section
       class="page-hero has-img"
-      style="background-image:url('./assets/img/himalaya-hunza.jpg')"
+      style="background-image:url('./assets/img/himalaya-hunza.webp')"
     >
       <div class="wrap">
         <p class="eyebrow">Blog</p>
@@ -245,7 +245,7 @@ main .aqua-info + .block {
   <footer class="site">
     <div class="cols">
       <div>
-        <img
+        <img loading="lazy" decoding="async"
           src="./logo-aqua-hunza.png"
           alt="Logo de Aqua Hunza Paraguay"
           width="238"
@@ -340,7 +340,7 @@ main .aqua-info + .block {
           return (
             '<article class="post">' +
               '<a class="thumb" href="' + escapeHTML(post.url) + '">' +
-                '<img src="' + imageURL(post.img) + '" ' +
+                '<img decoding="async" src="' + imageURL(post.img) + '" ' +
                 'alt="' + escapeHTML(post.title) + '" loading="lazy">' +
               '</a>' +
               '<p class="cat">' + escapeHTML(post.cat || "") + '</p>' +
