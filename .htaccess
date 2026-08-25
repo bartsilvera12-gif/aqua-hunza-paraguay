@@ -1,0 +1,89 @@
+# ============================================================
+#  Aqua Hunza Paraguay — configuración para Hostinger (Apache)
+# ============================================================
+
+# Página por defecto (index.html redirige al inicio del sitio)
+DirectoryIndex index.html
+
+# Página de error 404 personalizada
+ErrorDocument 404 /404.html
+
+# ------------------------------------------------------------
+#  Forzar HTTPS  (requiere el SSL activo en Hostinger)
+#  Si tu dominio todavía NO tiene SSL, comentá este bloque
+#  agregando '#' al inicio de las 3 líneas RewriteCond/RewriteRule.
+# ------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ------------------------------------------------------------
+#  Tipos MIME (por si el servidor no los reconoce)
+# ------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType image/webp                       .webp
+  AddType video/mp4                        .mp4
+  AddType image/svg+xml                    .svg
+  AddType font/woff2                       .woff2
+  AddType application/json                 .json
+</IfModule>
+
+# ------------------------------------------------------------
+#  Compresión (gzip) para texto
+# ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json image/svg+xml
+</IfModule>
+
+# ------------------------------------------------------------
+#  Caché de assets estáticos (mejora la velocidad)
+# ------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML: sin caché (para que los cambios se vean al toque)
+  ExpiresByType text/html                  "access plus 0 seconds"
+
+  # CSS / JS: 1 año
+  ExpiresByType text/css                   "access plus 1 year"
+  ExpiresByType application/javascript     "access plus 1 year"
+  ExpiresByType text/javascript            "access plus 1 year"
+
+  # Imágenes: 1 año
+  ExpiresByType image/webp                 "access plus 1 year"
+  ExpiresByType image/jpeg                 "access plus 1 year"
+  ExpiresByType image/png                  "access plus 1 year"
+  ExpiresByType image/svg+xml              "access plus 1 year"
+  ExpiresByType image/x-icon               "access plus 1 year"
+
+  # Video / fuentes: 1 año
+  ExpiresByType video/mp4                  "access plus 1 year"
+  ExpiresByType font/woff2                 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # HTML siempre fresco
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # Assets con caché larga e inmutable
+  <FilesMatch "\.(css|js|webp|jpe?g|png|svg|ico|mp4|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Headers de seguridad básicos
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ------------------------------------------------------------
+#  Proteger archivos sensibles
+# ------------------------------------------------------------
+<FilesMatch "(^\.htaccess|\.dc\.html|\.sql|\.thumbnail)$">
+  Require all denied
+</FilesMatch>

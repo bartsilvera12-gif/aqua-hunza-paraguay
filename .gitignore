@@ -7,3 +7,7 @@ desktop.ini
 # deps / build (por si acaso)
 node_modules/
 .vercel/
+
+# build para hosting
+dist/
+*.zip
