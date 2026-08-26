@@ -59,6 +59,17 @@
   .fmtbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
   .fmt{background:#EAF3F7;border:1px solid #D6E7EF;color:var(--navy);font-weight:600;font-size:12.5px;padding:7px 12px;border-radius:8px;cursor:pointer;transition:background .15s ease,color .15s ease}
   .fmt:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .preview{margin-top:10px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:18px 20px;max-height:380px;overflow:auto}
+  .preview:empty::before{content:"La vista previa aparece acá mientras escribís…";color:var(--muted);font-size:13px}
+  .preview>*:first-child{margin-top:0}
+  .preview h2{font-family:Manrope,sans-serif;font-weight:700;font-size:22px;color:var(--navy);line-height:1.2;margin:20px 0 8px}
+  .preview h3{font-family:Manrope,sans-serif;font-weight:700;font-size:18px;color:var(--navy);line-height:1.25;margin:16px 0 6px}
+  .preview p{color:#33475A;font-size:16px;line-height:1.75;margin:0 0 12px}
+  .preview ul,.preview ol{margin:0 0 12px;padding-left:22px}
+  .preview li{color:#33475A;font-size:16px;line-height:1.7;margin-bottom:6px}
+  .preview a{color:var(--teal);text-decoration:underline}
+  .preview strong{font-weight:700}
+  .preview img{max-width:100%;border-radius:10px}
   .imgprev{margin-top:8px;max-height:120px;border-radius:8px;display:none}
   .note{background:#FFF7E6;border:1px solid #F3E2B8;color:#7A5B10;font-size:13px;padding:12px 14px;border-radius:10px;margin-bottom:16px;display:none}
   .note.err{background:#FDECEA;border-color:#E7B8B3;color:#B3261E}
@@ -127,6 +138,8 @@
       </div>
       <textarea id="f_content" rows="10" placeholder="Escribí el contenido. Seleccioná un texto y tocá un botón de arriba para darle formato."></textarea>
       <div class="hint">Se muestra en la página de la nota. (Las notas “de fábrica” usan su propia página; ahí este campo no aplica.)</div>
+      <label style="margin-top:14px">Vista previa</label>
+      <div id="contentPreview" class="preview"></div>
     </div>
     <div class="field"><label><input type="checkbox" id="f_published" style="width:auto;margin-right:8px" checked>Publicada (visible en el blog)</label></div>
     <div class="bar">
@@ -261,6 +274,7 @@ function openEditor(p){
   document.getElementById('f_excerpt').value=p.excerpt||'';
   document.getElementById('f_img').value=p.img||'';
   document.getElementById('f_content').value=p.content||'';
+  updatePreview();
   document.getElementById('f_published').checked=p.published!==false;
   var cw=document.getElementById('contentWrap'); cw.style.opacity=p.builtin?'.5':'1';
   var prev=document.getElementById('imgprev'); if(p.img){prev.src=imgUrl(p.img);prev.style.display='block';}else{prev.style.display='none';}
@@ -279,6 +293,8 @@ document.getElementById('f_file').addEventListener('change',function(e){
   }).catch(function(err){ toast('No se pudo subir: '+(err.message||err)); });
 });
 document.getElementById('f_img').addEventListener('input',function(){var p=document.getElementById('imgprev');var v=this.value;if(v){p.src=imgUrl(v);p.style.display='block';}else p.style.display='none';});
+function updatePreview(){ var pv=document.getElementById('contentPreview'); if(pv) pv.innerHTML=document.getElementById('f_content').value; }
+document.getElementById('f_content').addEventListener('input',updatePreview);
 
 function fmt(kind){
   var t=document.getElementById('f_content');
@@ -299,6 +315,7 @@ function fmt(kind){
   var caret = s + (map[kind]?map[kind][0].length:(kind==='ul'?11:0));
   var innerLen = sel ? sel.length : (kind==='ul'?6:5);
   try{ t.setSelectionRange(caret, caret+innerLen); }catch(err){}
+  updatePreview();
 }
 function savePost(){
   var id=document.getElementById('f_id').value;
