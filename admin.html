@@ -56,6 +56,9 @@
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:640px){.row2{grid-template-columns:1fr}.post{flex-wrap:wrap}.post .acts{width:100%}}
   .hint{font-size:12.5px;color:var(--muted);margin-top:5px}
+  .fmtbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+  .fmt{background:#EAF3F7;border:1px solid #D6E7EF;color:var(--navy);font-weight:600;font-size:12.5px;padding:7px 12px;border-radius:8px;cursor:pointer;transition:background .15s ease,color .15s ease}
+  .fmt:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
   .imgprev{margin-top:8px;max-height:120px;border-radius:8px;display:none}
   .note{background:#FFF7E6;border:1px solid #F3E2B8;color:#7A5B10;font-size:13px;padding:12px 14px;border-radius:10px;margin-bottom:16px;display:none}
   .note.err{background:#FDECEA;border-color:#E7B8B3;color:#B3261E}
@@ -113,7 +116,16 @@
     </div>
     <div class="field" id="contentWrap">
       <label>Contenido de la nota</label>
-      <textarea id="f_content" rows="10" placeholder="Escribí el contenido. Podés usar HTML básico: <h2>Subtítulo</h2>, <p>párrafo</p>, <ul><li>ítem</li></ul>…"></textarea>
+      <div class="fmtbar">
+        <button type="button" class="fmt" onclick="fmt('h2')">Subtítulo</button>
+        <button type="button" class="fmt" onclick="fmt('h3')">Subtítulo menor</button>
+        <button type="button" class="fmt" onclick="fmt('p')">Párrafo</button>
+        <button type="button" class="fmt" onclick="fmt('strong')" title="Negrita"><b>N</b></button>
+        <button type="button" class="fmt" onclick="fmt('em')" title="Cursiva"><i>C</i></button>
+        <button type="button" class="fmt" onclick="fmt('ul')">Lista</button>
+        <button type="button" class="fmt" onclick="fmt('a')">Enlace</button>
+      </div>
+      <textarea id="f_content" rows="10" placeholder="Escribí el contenido. Seleccioná un texto y tocá un botón de arriba para darle formato."></textarea>
       <div class="hint">Se muestra en la página de la nota. (Las notas “de fábrica” usan su propia página; ahí este campo no aplica.)</div>
     </div>
     <div class="field"><label><input type="checkbox" id="f_published" style="width:auto;margin-right:8px" checked>Publicada (visible en el blog)</label></div>
@@ -268,6 +280,26 @@ document.getElementById('f_file').addEventListener('change',function(e){
 });
 document.getElementById('f_img').addEventListener('input',function(){var p=document.getElementById('imgprev');var v=this.value;if(v){p.src=imgUrl(v);p.style.display='block';}else p.style.display='none';});
 
+function fmt(kind){
+  var t=document.getElementById('f_content');
+  var s=t.selectionStart||0, e=t.selectionEnd||0;
+  var sel=t.value.substring(s,e);
+  var map={h2:['<h2>','</h2>'],h3:['<h3>','</h3>'],p:['<p>','</p>'],strong:['<strong>','</strong>'],em:['<em>','</em>'],a:['<a href="https://">','</a>']};
+  var text;
+  if(kind==='ul'){
+    var lines=(sel||'ítem 1\nítem 2').split('\n').map(function(l){return '  <li>'+l+'</li>';}).join('\n');
+    text='<ul>\n'+lines+'\n</ul>';
+  } else {
+    var m=map[kind]||['',''];
+    text=m[0]+(sel||'texto')+m[1];
+  }
+  t.value=t.value.substring(0,s)+text+t.value.substring(e);
+  t.focus();
+  // dejar el cursor dentro (seleccionando el texto de ejemplo si no había selección)
+  var caret = s + (map[kind]?map[kind][0].length:(kind==='ul'?11:0));
+  var innerLen = sel ? sel.length : (kind==='ul'?6:5);
+  try{ t.setSelectionRange(caret, caret+innerLen); }catch(err){}
+}
 function savePost(){
   var id=document.getElementById('f_id').value;
   var title=document.getElementById('f_title').value.trim();
