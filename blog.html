@@ -305,6 +305,8 @@ main .aqua-info + .block {
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./supabase-config.js"></script>
   <script src="./blog-data.js"></script>
 
   <script>
@@ -331,10 +333,7 @@ main .aqua-info + .block {
           .replace(/"/g, "&quot;");
       }
 
-      var posts = window.AquaBlog
-        ? AquaBlog.getPosts()
-        : [];
-
+      function renderPosts(posts) {
       var content = posts
         .map(function (post) {
           return (
@@ -359,10 +358,9 @@ main .aqua-info + .block {
         .join("");
 
       var postsContainer = document.getElementById("posts");
-
-      if (postsContainer) {
-        postsContainer.innerHTML = content;
+      if (postsContainer) postsContainer.innerHTML = content;
       }
+      (window.AquaBlog ? AquaBlog.getPosts() : Promise.resolve([])).then(renderPosts);
     })();
   </script>
 

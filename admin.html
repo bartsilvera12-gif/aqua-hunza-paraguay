@@ -29,7 +29,7 @@
   .grow{flex:1}
   /* gate */
   #gate{position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:50}
-  #gate .card{background:#fff;border-radius:16px;padding:34px;max-width:360px;width:calc(100% - 40px);text-align:center;box-shadow:0 30px 70px -40px rgba(0,0,0,.6)}
+  #gate .card{background:#fff;border-radius:16px;padding:34px;max-width:380px;width:calc(100% - 40px);text-align:center;box-shadow:0 30px 70px -40px rgba(0,0,0,.6)}
   #gate h2{font-family:Manrope,sans-serif;color:var(--navy);margin-bottom:8px}
   #gate p{color:var(--muted);font-size:14px;margin-bottom:18px}
   input,select,textarea{width:100%;background:#F7FBFD;border:1.5px solid #E1EDF3;border-radius:10px;padding:12px 14px;font:inherit;font-size:15px;color:var(--ink)}
@@ -57,7 +57,9 @@
   @media(max-width:640px){.row2{grid-template-columns:1fr}.post{flex-wrap:wrap}.post .acts{width:100%}}
   .hint{font-size:12.5px;color:var(--muted);margin-top:5px}
   .imgprev{margin-top:8px;max-height:120px;border-radius:8px;display:none}
-  .note{background:#FFF7E6;border:1px solid #F3E2B8;color:#7A5B10;font-size:13px;padding:12px 14px;border-radius:10px;margin-bottom:16px}
+  .note{background:#FFF7E6;border:1px solid #F3E2B8;color:#7A5B10;font-size:13px;padding:12px 14px;border-radius:10px;margin-bottom:16px;display:none}
+  .note.err{background:#FDECEA;border-color:#E7B8B3;color:#B3261E}
+  #gateMsg{color:#B3261E;font-size:13px;margin-top:10px;min-height:16px}
   #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s ease;z-index:60}
   #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -67,9 +69,11 @@
 <div id="gate">
   <div class="card">
     <h2>Panel de blogs</h2>
-    <p>Ingresá la contraseña para administrar.</p>
+    <p>Ingresá con tu cuenta de administrador.</p>
+    <div class="field"><input id="gateEmail" type="email" placeholder="Email" autocomplete="username"></div>
     <div class="field"><input id="gatePass" type="password" placeholder="Contraseña" autocomplete="current-password"></div>
     <button class="btn btn-primary" style="width:100%" onclick="tryGate()">Entrar</button>
+    <p id="gateMsg"></p>
   </div>
 </div>
 
@@ -77,22 +81,24 @@
   <div class="wrap">
     <div>
       <h1>Panel de blogs · Aqua Hunza</h1>
-      <div class="sub">Crear, editar, borrar y publicar notas · <a href="blog.html" target="_blank">ver el blog ↗</a></div>
+      <div class="sub"><span id="whoami"></span> · <a href="blog.html" target="_blank">ver el blog ↗</a></div>
     </div>
-    <button class="btn btn-primary" onclick="newPost()">+ Nuevo blog</button>
+    <div class="bar" style="margin:0">
+      <button class="btn btn-primary" onclick="newPost()">+ Nuevo blog</button>
+      <button class="btn btn-ghost" onclick="logout()">Salir</button>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="note">
-    <b>Cómo se publica:</b> lo que creás/editás se guarda en <b>este navegador</b> y ya lo ves en el blog. Para que aparezca para <b>todos</b> los visitantes, tocá <b>“Exportar para publicar”</b> y pasáselo a tu desarrollador (o pedime que lo suba al repo).
-  </div>
+  <div class="note" id="note"></div>
 
   <!-- editor -->
   <div id="editor">
     <h2 id="editorTitle">Nuevo blog</h2>
     <input type="hidden" id="f_id">
     <input type="hidden" id="f_builtin">
+    <input type="hidden" id="f_sort">
     <div class="row2">
       <div class="field"><label>Título</label><input id="f_title" placeholder="Título de la nota"></div>
       <div class="field"><label>Categoría</label><input id="f_cat" list="cats" placeholder="Ej: Tecnología">
@@ -101,8 +107,8 @@
     <div class="field"><label>Resumen (aparece en la tarjeta)</label><textarea id="f_excerpt" rows="2" placeholder="Un resumen corto…"></textarea></div>
     <div class="field">
       <label>Imagen</label>
-      <input id="f_img" placeholder="Nombre en assets/img (ej: comof.jpg) o subí una imagen">
-      <div class="bar" style="margin:8px 0 0"><input type="file" id="f_file" accept="image/*" style="width:auto"><span class="hint">Subir imagen (se guarda dentro de la nota)</span></div>
+      <input id="f_img" placeholder="Nombre en assets/img (ej: comof.webp), URL, o subí una imagen">
+      <div class="bar" style="margin:8px 0 0"><input type="file" id="f_file" accept="image/*" style="width:auto"><span class="hint">Subir imagen (se guarda en Supabase Storage)</span></div>
       <img loading="lazy" decoding="async" id="imgprev" class="imgprev" alt="">
     </div>
     <div class="field" id="contentWrap">
@@ -120,61 +126,124 @@
   <div class="bar">
     <h2 style="font-family:Manrope,sans-serif;color:var(--navy);font-size:18px">Notas</h2>
     <span class="grow"></span>
-    <button class="btn btn-navy btn-sm" onclick="exportData()">⬇ Exportar para publicar</button>
-    <button class="btn btn-ghost btn-sm" onclick="resetAll()">Restablecer</button>
+    <button class="btn btn-ghost btn-sm" onclick="render()">↻ Actualizar</button>
   </div>
   <div id="list"></div>
 </div>
 
+<div class="wrap">
+  <div class="bar">
+    <h2 style="font-family:Manrope,sans-serif;color:var(--navy);font-size:18px">Preguntas frecuentes</h2>
+    <span class="grow"></span>
+    <button class="btn btn-primary btn-sm" onclick="newFaq()">+ Nueva pregunta</button>
+    <button class="btn btn-ghost btn-sm" onclick="renderFaqs()">↻ Actualizar</button>
+  </div>
+  <div id="faqEditor" style="display:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:20px">
+    <h2 id="faqEditorTitle" style="font-family:Manrope,sans-serif;color:var(--navy);margin-bottom:16px">Nueva pregunta</h2>
+    <input type="hidden" id="fq_id"><input type="hidden" id="fq_sort">
+    <div class="row2">
+      <div class="field"><label>Categoría</label><input id="fq_cat" list="faqcats" placeholder="Ej: Tecnología y salud familiar"><datalist id="faqcats"></datalist></div>
+      <div class="field"><label style="margin-top:28px"><input type="checkbox" id="fq_pub" style="width:auto;margin-right:8px" checked>Publicada (visible en la web)</label></div>
+    </div>
+    <div class="field"><label>Pregunta</label><input id="fq_q" placeholder="¿…?"></div>
+    <div class="field"><label>Respuesta</label><textarea id="fq_a" rows="4" placeholder="Respuesta…"></textarea></div>
+    <div class="row2">
+      <div class="field"><label>Enlace a artículo (opcional)</label><input id="fq_href" placeholder="Ej: agua-alcalina.html"></div>
+      <div class="field"><label>Texto del enlace</label><input id="fq_label" placeholder="Ej: Agua alcalina"></div>
+    </div>
+    <div class="bar">
+      <button class="btn btn-primary" onclick="saveFaq()">Guardar</button>
+      <button class="btn btn-ghost" onclick="closeFaqEditor()">Cancelar</button>
+    </div>
+  </div>
+  <div id="faqList"></div>
+</div>
+
 <div id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./supabase-config.js"></script>
 <script src="./blog-data.js"></script>
+<script src="./faq-data.js"></script>
 <script>
-var PASS = "aquahunza"; // contraseña del panel (cambiala si querés)
-function tryGate(){
-  var v=document.getElementById('gatePass').value;
-  if(v===PASS || sessionStorage.getItem('ah_admin')==='1'){ sessionStorage.setItem('ah_admin','1'); document.getElementById('gate').style.display='none'; render(); }
-  else { toast('Contraseña incorrecta'); }
-}
-if(sessionStorage.getItem('ah_admin')==='1'){ document.getElementById('gate').style.display='none'; }
-document.getElementById('gatePass').addEventListener('keydown',function(e){if(e.key==='Enter')tryGate();});
+var POSTS = [];
+var FAQS = [];
 
-function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2200);}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2600);}
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function imgUrl(v){ if(!v) return ''; if(v.indexOf('data:')===0||v.indexOf('http')===0||v.indexOf('/')!==-1) return v; return './assets/img/'+v; }
+function gateMsg(m){ document.getElementById('gateMsg').textContent = m || ''; }
+function noteMsg(m, isErr){ var n=document.getElementById('note'); if(!m){n.style.display='none';return;} n.textContent=m; n.className='note'+(isErr?' err':''); n.style.display='block'; }
 
-function render(){
-  var all=AquaBlog.getAll();
-  // categorías para el datalist
-  var cats={}; all.forEach(function(p){if(p.cat)cats[p.cat]=1;});
-  document.getElementById('cats').innerHTML=Object.keys(cats).map(function(c){return '<option value="'+esc(c)+'">';}).join('');
-  var html=all.map(function(p,i){
-    var pub = p.published!==false;
-    return '<div class="post">'+
-      '<div class="thumb" style="background-image:url(\''+imgUrl(p.img)+'\')"></div>'+
-      '<div class="meta"><div class="cat">'+esc(p.cat||'')+'</div>'+
-      '<h3>'+esc(p.title||'(sin título)')+'</h3>'+
-      '<div class="ex">'+esc(p.excerpt||'')+'</div>'+
-      '<div class="tags">'+(pub?'<span class="tag pub">Publicada</span>':'<span class="tag draft">Borrador</span>')+(p.builtin?'<span class="tag builtin">De fábrica</span>':'')+'</div>'+
-      '</div>'+
-      '<div class="acts">'+
-        '<button class="btn btn-ghost btn-sm" onclick="editPost(\''+p.id+'\')">Editar</button>'+
-        '<button class="btn btn-ghost btn-sm" onclick="togglePub(\''+p.id+'\')">'+(pub?'Despublicar':'Publicar')+'</button>'+
-        '<button class="btn btn-ghost btn-sm" onclick="move(\''+p.id+'\',-1)">↑</button>'+
-        '<button class="btn btn-ghost btn-sm" onclick="move(\''+p.id+'\',1)">↓</button>'+
-        '<button class="btn btn-danger btn-sm" onclick="delPost(\''+p.id+'\')">Borrar</button>'+
-      '</div></div>';
-  }).join('');
-  document.getElementById('list').innerHTML=html||'<p style="color:var(--muted)">No hay notas.</p>';
+function tryGate(){
+  if(!window.AquaBlog || !AquaBlog.configured()){ gateMsg('Supabase no está configurado (completá supabase-config.js).'); return; }
+  var email=document.getElementById('gateEmail').value.trim();
+  var pass=document.getElementById('gatePass').value;
+  if(!email||!pass){ gateMsg('Completá email y contraseña.'); return; }
+  gateMsg('Ingresando…');
+  AquaBlog.signIn(email, pass).then(function(r){
+    if(r.error){ gateMsg('No se pudo ingresar: '+r.error.message); return; }
+    enter();
+  });
 }
 
-function newPost(){ openEditor({id:'',title:'',cat:'',excerpt:'',img:'',content:'',published:true,builtin:false}); }
-function editPost(id){ var p=AquaBlog.getPost(id); if(p)openEditor(p); }
+function enter(){
+  AquaBlog.getUser().then(function(u){
+    document.getElementById('whoami').textContent = u ? u.email : '';
+    document.getElementById('gate').style.display='none';
+    render();
+    renderFaqs();
+  });
+}
+
+function logout(){ AquaBlog.signOut().then(function(){ location.reload(); }); }
+
+function boot(){
+  if(!window.AquaBlog || !AquaBlog.configured()){
+    gateMsg('Supabase no configurado — completá supabase-config.js con tu URL y anon key.');
+    return;
+  }
+  AquaBlog.getUser().then(function(u){ if(u){ enter(); } });
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Enter' && document.getElementById('gate').style.display!=='none') tryGate(); });
+
+function render(){
+  return AquaBlog.getAll().then(function(all){
+    POSTS = all || [];
+    var cats={}; POSTS.forEach(function(p){if(p.cat)cats[p.cat]=1;});
+    document.getElementById('cats').innerHTML=Object.keys(cats).map(function(c){return '<option value="'+esc(c)+'">';}).join('');
+    var html=POSTS.map(function(p){
+      var pub = p.published!==false;
+      return '<div class="post">'+
+        '<div class="thumb" style="background-image:url(\''+imgUrl(p.img)+'\')"></div>'+
+        '<div class="meta"><div class="cat">'+esc(p.cat||'')+'</div>'+
+        '<h3>'+esc(p.title||'(sin título)')+'</h3>'+
+        '<div class="ex">'+esc(p.excerpt||'')+'</div>'+
+        '<div class="tags">'+(pub?'<span class="tag pub">Publicada</span>':'<span class="tag draft">Borrador</span>')+(p.builtin?'<span class="tag builtin">De fábrica</span>':'')+'</div>'+
+        '</div>'+
+        '<div class="acts">'+
+          '<button class="btn btn-ghost btn-sm" onclick="editPost(\''+p.id+'\')">Editar</button>'+
+          '<button class="btn btn-ghost btn-sm" onclick="togglePub(\''+p.id+'\')">'+(pub?'Despublicar':'Publicar')+'</button>'+
+          '<button class="btn btn-ghost btn-sm" onclick="move(\''+p.id+'\',-1)">↑</button>'+
+          '<button class="btn btn-ghost btn-sm" onclick="move(\''+p.id+'\',1)">↓</button>'+
+          '<button class="btn btn-danger btn-sm" onclick="delPost(\''+p.id+'\')">Borrar</button>'+
+        '</div></div>';
+    }).join('');
+    document.getElementById('list').innerHTML=html||'<p style="color:var(--muted)">No hay notas.</p>';
+    noteMsg('');
+  }).catch(function(e){
+    noteMsg('No se pudieron leer las notas: '+(e.message||e)+'. ¿Está expuesto el schema "aquahunza" y sos admin?', true);
+  });
+}
+
+function newPost(){ openEditor({id:'',title:'',cat:'',excerpt:'',img:'',content:'',published:true,builtin:false,sort:''}); }
+function editPost(id){ var p=POSTS.filter(function(x){return x.id===id;})[0]; if(p)openEditor(p); }
 function openEditor(p){
   document.getElementById('editor').classList.add('on');
   document.getElementById('editorTitle').textContent = p.id? 'Editar blog' : 'Nuevo blog';
   document.getElementById('f_id').value=p.id||'';
   document.getElementById('f_builtin').value=p.builtin?'1':'';
+  document.getElementById('f_sort').value=(p.sort!=null?p.sort:'');
   document.getElementById('f_title').value=p.title||'';
   document.getElementById('f_cat').value=p.cat||'';
   document.getElementById('f_excerpt').value=p.excerpt||'';
@@ -189,49 +258,129 @@ function closeEditor(){ document.getElementById('editor').classList.remove('on')
 
 document.getElementById('f_file').addEventListener('change',function(e){
   var f=e.target.files[0]; if(!f)return;
-  if(f.size>1500000){ toast('Imagen muy pesada (máx ~1.5MB)'); return; }
-  var r=new FileReader(); r.onload=function(){ document.getElementById('f_img').value=r.result; var p=document.getElementById('imgprev'); p.src=r.result; p.style.display='block'; }; r.readAsDataURL(f);
+  if(f.size>5000000){ toast('Imagen muy pesada (máx ~5MB)'); return; }
+  toast('Subiendo imagen…');
+  AquaBlog.uploadImage(f).then(function(url){
+    document.getElementById('f_img').value=url;
+    var p=document.getElementById('imgprev'); p.src=url; p.style.display='block';
+    toast('Imagen subida ✓');
+  }).catch(function(err){ toast('No se pudo subir: '+(err.message||err)); });
 });
 document.getElementById('f_img').addEventListener('input',function(){var p=document.getElementById('imgprev');var v=this.value;if(v){p.src=imgUrl(v);p.style.display='block';}else p.style.display='none';});
 
 function savePost(){
-  var all=AquaBlog.getAll();
   var id=document.getElementById('f_id').value;
   var title=document.getElementById('f_title').value.trim();
   if(!title){ toast('Poné un título'); return; }
-  var data={
+  var builtin=document.getElementById('f_builtin').value==='1';
+  var sortVal=document.getElementById('f_sort').value;
+  var post={
     title:title,
     cat:document.getElementById('f_cat').value.trim()||'General',
     excerpt:document.getElementById('f_excerpt').value.trim(),
     img:document.getElementById('f_img').value.trim(),
     content:document.getElementById('f_content').value,
     published:document.getElementById('f_published').checked,
-    builtin:document.getElementById('f_builtin').value==='1'
+    builtin:builtin
   };
-  if(id){ // editar
-    for(var i=0;i<all.length;i++){ if(all[i].id===id){ for(var k in data) all[i][k]=data[k]; if(!all[i].builtin) all[i].url='articulo.html?id='+id; break; } }
-  } else { // nuevo
-    var nid=AquaBlog.slugify(title); var base=nid,n=2; while(all.some(function(p){return p.id===nid;})){ nid=base+'-'+n; n++; }
-    data.id=nid; data.builtin=false; data.url='articulo.html?id='+nid; all.unshift(data);
+  if(id){
+    post.id=id;
+    if(sortVal!=='') post.sort=parseInt(sortVal,10);
+    if(!builtin) post.url='articulo.html?id='+id;
+  } else {
+    var base=AquaBlog.slugify(title), nid=base, n=2;
+    while(POSTS.some(function(p){return p.id===nid;})){ nid=base+'-'+n; n++; }
+    post.id=nid; post.builtin=false; post.url='articulo.html?id='+nid;
+    var min=POSTS.length?Math.min.apply(null,POSTS.map(function(p){return p.sort||0;})):10;
+    post.sort=min-10;
   }
-  AquaBlog.save(all); closeEditor(); render(); toast('Guardado ✓');
+  AquaBlog.upsert(post).then(function(r){
+    if(r.error) throw r.error;
+    closeEditor(); toast('Guardado ✓'); return render();
+  }).catch(function(e){ toast('No se pudo guardar: '+(e.message||e)); });
 }
-function delPost(id){ if(!confirm('¿Borrar esta nota?'))return; var all=AquaBlog.getAll().filter(function(p){return p.id!==id;}); AquaBlog.save(all); render(); toast('Borrada'); }
-function togglePub(id){ var all=AquaBlog.getAll(); all.forEach(function(p){if(p.id===id)p.published=(p.published===false);}); AquaBlog.save(all); render(); }
-function move(id,dir){ var all=AquaBlog.getAll(); var i=all.findIndex(function(p){return p.id===id;}); var j=i+dir; if(i<0||j<0||j>=all.length)return; var t=all[i];all[i]=all[j];all[j]=t; AquaBlog.save(all); render(); }
-function resetAll(){ if(!confirm('Descartar tus cambios y volver a los datos publicados?'))return; AquaBlog.resetSeed(); render(); toast('Restablecido'); }
-
-function exportData(){
-  var all=AquaBlog.getAll();
-  var seed='window.BLOG_SEED = '+JSON.stringify(all,null,2)+';\n';
-  var header='/* Generado por el panel de admin. Reemplazá el bloque BLOG_SEED de blog-data.js con esto y commiteá al repo. */\n';
-  var body=header+seed;
-  var blob=new Blob([body],{type:'text/javascript'}); var url=URL.createObjectURL(blob);
-  var a=document.createElement('a'); a.href=url; a.download='blog-seed.js'; a.click(); URL.revokeObjectURL(url);
-  toast('Archivo descargado — pasáselo a tu dev o pedime que lo suba');
+function delPost(id){
+  if(!confirm('¿Borrar esta nota?'))return;
+  AquaBlog.remove(id).then(function(r){ if(r.error) throw r.error; toast('Borrada'); return render(); })
+    .catch(function(e){ toast('No se pudo borrar: '+(e.message||e)); });
+}
+function togglePub(id){
+  var p=POSTS.filter(function(x){return x.id===id;})[0]; if(!p)return;
+  AquaBlog.update(id,{published: p.published===false}).then(function(r){ if(r.error) throw r.error; return render(); })
+    .catch(function(e){ toast('Error: '+(e.message||e)); });
+}
+function move(id,dir){
+  var i=POSTS.findIndex(function(p){return p.id===id;}); var j=i+dir;
+  if(i<0||j<0||j>=POSTS.length)return;
+  var a=POSTS[i], b=POSTS[j];
+  var sa=a.sort||0, sb2=b.sort||0;
+  if(sa===sb2){ sb2 = sa + (dir>0?1:-1); }
+  Promise.all([ AquaBlog.update(a.id,{sort:sb2}), AquaBlog.update(b.id,{sort:sa}) ]).then(function(){ return render(); })
+    .catch(function(e){ toast('Error: '+(e.message||e)); });
 }
 
-if(document.getElementById('gate').style.display==='none') render();
+// ---- Preguntas frecuentes ----
+function renderFaqs(){
+  if(!window.AquaFaq) return Promise.resolve();
+  return AquaFaq.getAll().then(function(all){
+    FAQS = all || [];
+    var cats={}; FAQS.forEach(function(f){if(f.category)cats[f.category]=1;});
+    document.getElementById('faqcats').innerHTML=Object.keys(cats).map(function(c){return '<option value="'+esc(c)+'">';}).join('');
+    document.getElementById('faqList').innerHTML=FAQS.map(function(f){
+      var pub=f.published!==false;
+      return '<div class="post"><div class="meta"><div class="cat">'+esc(f.category||'')+'</div>'+
+        '<h3>'+esc(f.question||'')+'</h3><div class="ex">'+esc(f.answer||'')+'</div>'+
+        '<div class="tags">'+(pub?'<span class="tag pub">Publicada</span>':'<span class="tag draft">Borrador</span>')+'</div></div>'+
+        '<div class="acts">'+
+          '<button class="btn btn-ghost btn-sm" onclick="editFaq(\''+f.id+'\')">Editar</button>'+
+          '<button class="btn btn-ghost btn-sm" onclick="toggleFaq(\''+f.id+'\')">'+(pub?'Despublicar':'Publicar')+'</button>'+
+          '<button class="btn btn-ghost btn-sm" onclick="moveFaq(\''+f.id+'\',-1)">↑</button>'+
+          '<button class="btn btn-ghost btn-sm" onclick="moveFaq(\''+f.id+'\',1)">↓</button>'+
+          '<button class="btn btn-danger btn-sm" onclick="delFaq(\''+f.id+'\')">Borrar</button>'+
+        '</div></div>';
+    }).join('')||'<p style="color:var(--muted)">No hay preguntas.</p>';
+  }).catch(function(e){ toast('FAQ: '+(e.message||e)); });
+}
+function newFaq(){ openFaq({id:'',category:'',question:'',answer:'',link_href:'',link_label:'',published:true,sort:''}); }
+function editFaq(id){ var f=FAQS.filter(function(x){return String(x.id)===String(id);})[0]; if(f)openFaq(f); }
+function openFaq(f){
+  document.getElementById('faqEditor').style.display='block';
+  document.getElementById('faqEditorTitle').textContent=f.id?'Editar pregunta':'Nueva pregunta';
+  document.getElementById('fq_id').value=f.id||'';
+  document.getElementById('fq_sort').value=(f.sort!=null?f.sort:'');
+  document.getElementById('fq_cat').value=f.category||'';
+  document.getElementById('fq_q').value=f.question||'';
+  document.getElementById('fq_a').value=f.answer||'';
+  document.getElementById('fq_href').value=f.link_href||'';
+  document.getElementById('fq_label').value=f.link_label||'';
+  document.getElementById('fq_pub').checked=f.published!==false;
+  document.getElementById('faqEditor').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function closeFaqEditor(){ document.getElementById('faqEditor').style.display='none'; }
+function saveFaq(){
+  var id=document.getElementById('fq_id').value;
+  var q=document.getElementById('fq_q').value.trim();
+  if(!q){ toast('Poné la pregunta'); return; }
+  var sortVal=document.getElementById('fq_sort').value;
+  var faq={
+    category:document.getElementById('fq_cat').value.trim()||'General',
+    question:q,
+    answer:document.getElementById('fq_a').value.trim(),
+    link_href:document.getElementById('fq_href').value.trim()||null,
+    link_label:document.getElementById('fq_label').value.trim()||null,
+    published:document.getElementById('fq_pub').checked
+  };
+  var op;
+  if(id){ if(sortVal!=='') faq.sort=parseInt(sortVal,10); op=AquaFaq.update(id,faq); }
+  else { var max=FAQS.length?Math.max.apply(null,FAQS.map(function(f){return f.sort||0;})):0; faq.sort=max+10; op=AquaFaq.insert(faq); }
+  op.then(function(r){ if(r.error) throw r.error; closeFaqEditor(); toast('Guardado ✓'); return renderFaqs(); })
+    .catch(function(e){ toast('No se pudo guardar: '+(e.message||e)); });
+}
+function delFaq(id){ if(!confirm('¿Borrar esta pregunta?'))return; AquaFaq.remove(id).then(function(r){ if(r.error)throw r.error; toast('Borrada'); return renderFaqs(); }).catch(function(e){ toast('Error: '+(e.message||e)); }); }
+function toggleFaq(id){ var f=FAQS.filter(function(x){return String(x.id)===String(id);})[0]; if(!f)return; AquaFaq.update(id,{published:f.published===false}).then(function(r){ if(r.error)throw r.error; return renderFaqs(); }).catch(function(e){ toast('Error: '+(e.message||e)); }); }
+function moveFaq(id,dir){ var i=FAQS.findIndex(function(f){return String(f.id)===String(id);}); var j=i+dir; if(i<0||j<0||j>=FAQS.length)return; var a=FAQS[i],b=FAQS[j]; var sa=a.sort||0,sb2=b.sort||0; if(sa===sb2){sb2=sa+(dir>0?1:-1);} Promise.all([AquaFaq.update(a.id,{sort:sb2}),AquaFaq.update(b.id,{sort:sa})]).then(function(){return renderFaqs();}).catch(function(e){toast('Error: '+(e.message||e));}); }
+
+boot();
 </script>
 </body>
 </html>
