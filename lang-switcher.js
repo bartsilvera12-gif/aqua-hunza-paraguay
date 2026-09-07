@@ -5,6 +5,23 @@
    Un solo archivo, incluido en todas las páginas.
    ============================================================ */
 (function () {
+  // ── Parche React + Google Translate ──────────────────────────
+  // Google Translate reemplaza nodos de texto por <font>, y cuando la
+  // app (React) intenta remover/insertar esos nodos tira errores
+  // ("Script error"). Estos guardas evitan el crash sin romper nada.
+  if (typeof Node === 'function' && Node.prototype) {
+    var _removeChild = Node.prototype.removeChild;
+    Node.prototype.removeChild = function (child) {
+      if (child && child.parentNode !== this) { try { return child; } catch (e) { return child; } }
+      return _removeChild.apply(this, arguments);
+    };
+    var _insertBefore = Node.prototype.insertBefore;
+    Node.prototype.insertBefore = function (newNode, referenceNode) {
+      if (referenceNode && referenceNode.parentNode !== this) { return newNode; }
+      return _insertBefore.apply(this, arguments);
+    };
+  }
+
   var LANGS = [['es', 'ES'], ['en', 'EN'], ['pt', 'PT'], ['de', 'DE']];
   // banderitas SVG (se ven en todos los sistemas, a diferencia de los emoji en Windows)
   var FLAGS = {
@@ -21,8 +38,8 @@
     s.id = 'als-css';
     s.textContent =
       '#google_translate_element{position:fixed!important;left:-99999px!important;top:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important}' +
-      '.goog-te-banner-frame,iframe.skiptranslate,.VIpgJd-ZVi9od-ORHb-OEVmcd,#goog-gt-tt,.goog-te-balloon-frame,.goog-tooltip{display:none!important;visibility:hidden!important;height:0!important}' +
-      'body{top:0!important;position:static!important}' +
+      '.goog-te-banner-frame,iframe.skiptranslate,.VIpgJd-ZVi9od-ORHb-OEVmcd,#goog-gt-tt,.goog-te-balloon-frame,.goog-tooltip,#__bundler_err{display:none!important;visibility:hidden!important;height:0!important}' +
+      'html{margin-top:0!important}body{top:0!important;position:static!important;margin-top:0!important}' +
       '.goog-text-highlight{background:none!important;box-shadow:none!important}' +
       '#als-bar{position:fixed;left:16px;bottom:16px;z-index:2147483000;display:flex;gap:2px;' +
       'background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border:1px solid #E4EEF3;border-radius:999px;' +
