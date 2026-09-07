@@ -60,10 +60,10 @@ AddDefaultCharset utf-8
   # HTML: sin caché (para que los cambios se vean al toque)
   ExpiresByType text/html                  "access plus 0 seconds"
 
-  # CSS / JS: 1 año
-  ExpiresByType text/css                   "access plus 1 year"
-  ExpiresByType application/javascript     "access plus 1 year"
-  ExpiresByType text/javascript            "access plus 1 year"
+  # CSS / JS: sin caché larga (para que los cambios se vean enseguida)
+  ExpiresByType text/css                   "access plus 0 seconds"
+  ExpiresByType application/javascript     "access plus 0 seconds"
+  ExpiresByType text/javascript            "access plus 0 seconds"
 
   # Imágenes: 1 año
   ExpiresByType image/webp                 "access plus 1 year"
@@ -78,13 +78,13 @@ AddDefaultCharset utf-8
 </IfModule>
 
 <IfModule mod_headers.c>
-  # HTML siempre fresco
-  <FilesMatch "\.html$">
+  # HTML, JS y CSS siempre frescos (cambian seguido -> nada de caché larga)
+  <FilesMatch "\.(html|js|css)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
-  # Assets con caché larga e inmutable
-  <FilesMatch "\.(css|js|webp|jpe?g|png|svg|ico|mp4|woff2)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
+  # Imágenes, video y fuentes: caché larga (no cambian)
+  <FilesMatch "\.(webp|jpe?g|png|svg|ico|mp4|woff2)$">
+    Header set Cache-Control "public, max-age=31536000"
   </FilesMatch>
 
   # Headers de seguridad básicos
