@@ -11,3 +11,10 @@ node_modules/
 # build para hosting
 dist/
 *.zip
+
+
+# fuentes de video pesadas (no van a git; +100MB)
+uploads/video.mp4
+
+# tooling local
+.claude/
