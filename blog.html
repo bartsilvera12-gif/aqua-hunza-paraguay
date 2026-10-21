@@ -360,7 +360,12 @@ main .aqua-info + .block {
         .join("");
 
       var postsContainer = document.getElementById("posts");
-      if (postsContainer) postsContainer.innerHTML = content;
+      if (postsContainer) {
+        postsContainer.innerHTML = content;
+        // Los posts se inyectan de forma asíncrona, después de que corre reveal.js;
+        // los revelamos acá para que el texto no quede oculto por reveal-on.
+        Array.prototype.forEach.call(postsContainer.querySelectorAll("*"), function (el) { el.classList.add("rv-in"); });
+      }
       }
       (window.AquaBlog ? AquaBlog.getPosts() : Promise.resolve([])).then(renderPosts);
     })();
